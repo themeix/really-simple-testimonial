@@ -173,4 +173,4 @@ if ($rst_query_theme_8->have_posts()) {
 
     <?php
 }
-?>
+

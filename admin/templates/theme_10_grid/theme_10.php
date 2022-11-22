@@ -272,4 +272,4 @@ if ($rst_query_theme_10->have_posts()) {
 
     <?php
 }
-?>
+

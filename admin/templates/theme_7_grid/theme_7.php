@@ -183,4 +183,3 @@ if ($rst_query_theme_7->have_posts()) {
 
     <?php
 }
-?>

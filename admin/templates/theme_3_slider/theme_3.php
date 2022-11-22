@@ -76,19 +76,19 @@ if ($rst_query_theme_3->have_posts()) {
 
         <?php
                 }
-        ?>
 
-        <?php if ($navigation == 'false'){ ?>
+
+         if ($navigation == 'false'){ ?>
         .rst_<?php echo esc_attr( $postid );?> .slider-arrows
                 {
                      display: none!important;
                 }
                <?php
 
-        }?>
+        }
 
 
-        <?php if ($navigation == 'true'){ ?>
+         if ($navigation == 'true'){ ?>
         .rst_<?php echo esc_attr( $postid );?> .slider-prev-3 {
             background-color: <?php echo esc_attr( $rst_nav_bg_color )?>!important;
 
@@ -263,9 +263,7 @@ if ($rst_query_theme_3->have_posts()) {
                                                           fill="<?php echo $rst_rating_color; ?>"/>
                                                 </svg>
                                                 <?php
-                                            } ?>
-
-                                            <?php
+                                            }
                                         }
                                     }
                                     ?>
@@ -342,4 +340,3 @@ if ($rst_query_theme_3->have_posts()) {
 
     <?php
 }
-?>

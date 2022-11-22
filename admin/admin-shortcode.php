@@ -2212,6 +2212,6 @@ function rst_testimonial_meta_box_save_func($post_id)
 add_action('save_post', 'rst_testimonial_meta_box_save_func');
 # Custom metabox field end
 
-?>
+
 
 

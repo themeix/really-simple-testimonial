@@ -233,8 +233,8 @@ add_action('add_meta_boxes', 'rst_testimonial_meta_box');
 function rst_testimonials_inner_custom_box($post)
 {
 
-    // Use nonce for verification
-    wp_nonce_field(plugin_basename(__FILE__), 'rst_testimonials_inner_custom_noncename');  ?>
+
+      ?>
 
     <!-- Name -->
     <p><label for="title"><strong><?php _e('Name:', 'rst-testimonial'); ?></strong></label></p>
