@@ -24,8 +24,8 @@ if ($rst_query_theme_1->have_posts()) {
     ?>
 
     <script type="text/javascript">
-        ;(function ($) {
-            $(document).ready(function () {
+
+            jQuery(document).ready(function () {
                 $('.slider_for_<?php echo esc_attr($postid); ?>').slick({
                     slidesToShow: 1,
                     slidesToScroll: 1,
@@ -54,7 +54,7 @@ if ($rst_query_theme_1->have_posts()) {
                     draggable: false,
                 });
             });
-        }(jQuery));
+
     </script>
 
 
