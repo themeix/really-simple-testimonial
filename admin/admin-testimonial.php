@@ -399,7 +399,7 @@ function single_raepeater_meta_boxes()
         'single_repeatable_meta_box_callback',
         'rst_testimonial',
         'normal',
-        'high');
+        'low');
 }
 
 function single_repeatable_meta_box_callback($post)
@@ -498,6 +498,11 @@ function single_repeatable_meta_box_save($post_id)
     } elseif (empty($new) && $old) {
         delete_post_meta($post_id, 'single_repeter_group', $old);
     }
-    $repeter_status = $_REQUEST['repeter_status'];
-    update_post_meta($post_id, 'repeter_status', $repeter_status);
+
+    if(isset($_REQUEST['repeter_status'])){
+        $repeter_status = $_REQUEST['repeter_status'];
+        update_post_meta($post_id, 'repeter_status', $repeter_status);
+    }
+
+
 }
