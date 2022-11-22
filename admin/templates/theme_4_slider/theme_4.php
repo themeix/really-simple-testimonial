@@ -78,12 +78,9 @@ if ($rst_query_theme_4->have_posts()) {
         }
 
         <?php
-                }
-        ?>
+        }
 
-
-
-        <?php if ($navigation == 'false'){ ?>
+         if ($navigation == 'false'){ ?>
         .rst_<?php echo esc_attr( $postid );?> .slider-arrows
         {
             display: none!important;

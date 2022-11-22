@@ -76,29 +76,25 @@ if ($rst_query_theme_5->have_posts()) {
         }
 
         <?php
-                }
-        ?>
+        }
 
-        <?php if ($navigation == 'false'){ ?>
+        if ($navigation == 'false'){ ?>
         .rst_<?php echo esc_attr( $postid );?> .slider-arrows {
             display: none !important;
         }
 
         <?php
 
- }?>
-
-
-        <?php if ($navigation == 'true'){ ?>
+    }
+    if ($navigation == 'true'){ ?>
         .rst_slider_prev_<?php echo esc_attr($postid); ?> .rst-inline-block svg {
 
 
         }
+
         <?php
 
- }?>
-
-        <?php if ($rst_show_item_bg_option == 1) { ?>
+    } if ($rst_show_item_bg_option == 1) { ?>
 
         .rst_<?php echo esc_attr( $postid );?> .rst_testimonial_item {
             background-color: <?php echo $rst_item_bg_color; ?> !important;
@@ -296,7 +292,7 @@ if ($rst_query_theme_5->have_posts()) {
                     <svg width="34" height="31" viewBox="0 0 34 31" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
                               d="M14.3703 30.1686L0.360779 16.1591V14.1781L14.3703 0.168579L16.3513 2.14953L4.73455 13.769H33.9836V16.5709H4.73175L16.3541 28.1876L14.3731 30.1686H14.3703Z"
-                              fill="<?php echo $rst_nav_text_color;?>"/>
+                              fill="<?php echo $rst_nav_text_color; ?>"/>
                     </svg>
                     </span>
                     </button>
@@ -305,7 +301,7 @@ if ($rst_query_theme_5->have_posts()) {
                      <svg width="34" height="31" viewBox="0 0 34 31" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
                               d="M19.6299 30.3486L33.6395 16.3391V14.3582L19.6299 0.348633L17.649 2.32958L29.2657 13.9491H0.0166016V16.751H29.2685L17.6462 28.3677L19.6271 30.3486H19.6299Z"
-                              fill="<?php echo $rst_nav_text_color;?>"/>
+                              fill="<?php echo $rst_nav_text_color; ?>"/>
                      </svg>
                   </span>
                     </button>
