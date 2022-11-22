@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-wp_enqueue_style('rst_frontend_from_style', plugin_dir_url(__FILE__) . '../public/css/frontend-form.css', array(), time(), 'all');
+wp_enqueue_style('rst_frontend_from_style', plugin_dir_url(__FILE__) . 'css/frontend-form.css', array(), time(), 'all');
 
 ?>
 
