@@ -1,0 +1,275 @@
+.rst-box-2{
+    max-width: 100%!important;
+}
+
+
+
+.rst-pur-css-arrow{
+    border-width: 12px 12px 0 12px;
+    border-color: #F3F4F6 transparent transparent transparent;
+    }
+
+
+*,
+.rst-box-2 ::after,
+.rst-box-2 ::before {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: currentColor
+}
+
+
+
+
+[role=button],
+button {
+    cursor: pointer
+}
+
+
+
+
+.rst-box-2 h1,
+.rst-box-2 h2,
+.rst-box-2 h3,
+.rst-box-2 h4,
+.rst-box-2 h5,
+.rst-box-2 h6 {
+  margin: 0;
+}
+
+.rst-box-2 a {
+    color: inherit;
+    text-decoration: inherit
+}
+
+
+
+
+
+[hidden] {
+    display: none
+}
+
+
+
+.rst-container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 1rem;
+    padding-left: 1rem
+}
+
+@media (min-width:640px) {
+    .rst-container {
+        max-width: 640px
+    }
+}
+
+@media (min-width:768px) {
+    .rst-container {
+        max-width: 768px
+    }
+}
+
+@media (min-width:1024px) {
+    .rst-container {
+        max-width: 1024px
+    }
+}
+
+@media (min-width:1280px) {
+    .rst-container {
+        max-width: 1280px
+    }
+}
+
+@media (min-width:1536px) {
+    .rst-container {
+        max-width: 1536px
+    }
+}
+
+.rst-container {
+    max-width: 100%
+}
+
+@media (min-width:640px) {
+    .rst-container {
+        max-width: 610px
+    }
+}
+
+@media (min-width:768px) {
+    .rst-container {
+        max-width: 750px
+    }
+}
+
+@media (min-width:1024px) {
+    .rst-container {
+        max-width: 1000px
+    }
+}
+
+@media (min-width:1280px) {
+    .rst-container {
+        max-width: 1200px
+    }
+}
+
+@media (min-width:1536px) {
+    .rst-container {
+        max-width: 1316px
+    }
+}
+
+.rst-relative {
+    position: relative
+}
+
+.rst-m-auto {
+    margin: auto
+}
+
+.rst-mt-4 {
+    margin-top: 1rem
+}
+
+.rst-mr-1 {
+    margin-right: .25rem
+}
+
+.rst-inline-block {
+    display: inline-block
+}
+
+.rst-flex {
+    display: flex
+}
+
+.rst-grid {
+    display: grid
+}
+
+.rst-h-15 {
+    height: 3.75rem
+}
+
+.rst-h-0 {
+    height: 0
+}
+
+.rst-w-15 {
+    width: 3.75rem
+}
+
+.rst-w-0 {
+    width: 0
+}
+
+.rst-flex-col {
+    flex-direction: column
+}
+
+.rst-justify-center {
+    justify-content: center
+}
+
+.rst-gap-6 {
+    gap: 1.5rem
+}
+
+.rst-rounded-md {
+    border-radius: .625rem
+}
+
+.rst-rounded-full {
+    border-radius: 9999px
+}
+
+.rst-border {
+    border-width: 1px
+}
+
+.rst-border-solid {
+    border-style: solid
+}
+
+.rst-border-coolGray-100 {
+    --tw-border-opacity: 1;
+    border-color: rgba(243, 244, 246, var(--tw-border-opacity))
+}
+
+.rst-p-4 {
+    padding: 1rem
+}
+
+.rst-rst-pt-20 {
+    padding-top: 5rem
+}
+
+.rst-text-center {
+    text-align: center
+}
+
+.rst-text-base {
+    font-size: 1rem
+}
+
+.rst-text-xl {
+    font-size: 1.25rem
+}
+
+.rst-font-normal {
+    font-weight: 400
+}
+
+.rst-font-bold {
+    font-weight: 700
+}
+
+.rst-text-coolGray-600 {
+    --tw-text-opacity: 1;
+    color: rgba(75, 85, 99, var(--tw-text-opacity))
+}
+
+.rst-text-coolGray-900 {
+    --tw-text-opacity: 1;
+    color: rgba(17, 24, 39, var(--tw-text-opacity))
+}
+
+.rst-opacity-60 {
+    opacity: 60%
+}
+
+.rst-transition {
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+    transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+    transition-duration: 150ms
+}
+
+.hover\:rst-border-coolGray-200:hover {
+    --tw-border-opacity: 1;
+    border-color: rgba(229, 231, 235, var(--tw-border-opacity))
+}
+
+@media (min-width:640px) {
+    .sm\:rst-grid {
+        display: grid
+    }
+
+    .sm\:rst-grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr))
+    }
+}
+
+@media (min-width:1024px) {
+    .lg\:rst-grid-cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr))
+    }
+}
