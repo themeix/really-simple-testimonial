@@ -1,13 +1,17 @@
 <?php
-/*
-Plugin Name: RST Testimonial
-Version: 1.0
-Plugin URI: https://rst.com
-Author: rst
-Author URI: https://rst.com
+/**
+Plugin Name: Really Simple Testimonials
+Version: 1.0.0
+Plugin URI: https://rst.yourdivi.com/
+Author: themeix
+Author URI: https://themeix.com.com
 Description: A Testimonial Plugin for WordPress.
 Text Domain: rst-testimonial
-Domain Path: /languages/
+Domain Path: /languages
+Requires: 4.6 or higher
+License: GPLv3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+Requires PHP: 5.6
 */
 
 
