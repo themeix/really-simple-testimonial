@@ -223,6 +223,30 @@ function rst_testimonial_pro_post_query($atts, $content = null)
             include(__DIR__ . '/templates/theme_10_grid/theme_10.php');
 
             break;
+
+        case '11':
+
+            include(__DIR__ . '/templates/theme_11_slider/theme_11.php');
+
+            break;
+
+        case '12':
+
+            include(__DIR__ . '/templates/theme_12_slider/theme_12.php');
+
+            break;
+
+        case '13':
+
+            include(__DIR__ . '/templates/theme_13_slider/theme_13.php');
+
+            break;
+
+        case '14':
+
+            include(__DIR__ . '/templates/theme_14_slider/theme_14.php');
+
+            break;
     }
 
 

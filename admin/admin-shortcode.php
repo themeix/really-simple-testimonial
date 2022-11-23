@@ -359,6 +359,23 @@ function rst_testimonials_display_post_type_func($post, $args)
                                             selected($rst_testimonial_themes, '10');
                                         } ?>><?php _e('Theme 10 (Grid)', 'rst_testimonial_pro') ?></option>
 
+
+                                        <option value="11" <?php if (isset ($rst_testimonial_themes)) {
+                                            selected($rst_testimonial_themes, '11');
+                                        } ?>><?php _e('Theme 11 (Slider)', 'rst_testimonial_pro') ?></option>
+
+                                        <option value="12" <?php if (isset ($rst_testimonial_themes)) {
+                                            selected($rst_testimonial_themes, '12');
+                                        } ?>><?php _e('Theme 12 (Slider)', 'rst_testimonial_pro') ?></option>
+
+                                        <option value="13" <?php if (isset ($rst_testimonial_themes)) {
+                                            selected($rst_testimonial_themes, '13');
+                                        } ?>><?php _e('Theme 13 (Slider)', 'rst_testimonial_pro') ?></option>
+
+                                        <option value="14" <?php if (isset ($rst_testimonial_themes)) {
+                                            selected($rst_testimonial_themes, '14');
+                                        } ?>><?php _e('Theme 14 (Slider)', 'rst_testimonial_pro') ?></option>
+
                                     </select>
 
                                     <div id="rst_imagePreview" style="display: none;">
@@ -427,6 +444,28 @@ function rst_testimonials_display_post_type_func($post, $args)
                                             if (theme == 10) {
                                                 $('#rst_imagePreview').show();
                                                 $('#rst_imagePreview img').attr('src', '<?php echo plugin_dir_url(__FILE__) . 'templates/screenshots/theme-10.png'; ?>');
+                                            }
+
+                                            if (theme == 11) {
+                                                $('#rst_imagePreview').show();
+                                                $('#rst_imagePreview img').attr('src', '<?php echo plugin_dir_url(__FILE__) . 'templates/screenshots/theme-11.png'; ?>');
+                                            }
+
+
+                                            if (theme == 12) {
+                                                $('#rst_imagePreview').show();
+                                                $('#rst_imagePreview img').attr('src', '<?php echo plugin_dir_url(__FILE__) . 'templates/screenshots/theme-12.png'; ?>');
+                                            }
+
+
+                                            if (theme == 13) {
+                                                $('#rst_imagePreview').show();
+                                                $('#rst_imagePreview img').attr('src', '<?php echo plugin_dir_url(__FILE__) . 'templates/screenshots/theme-13.png'; ?>');
+                                            }
+
+                                            if (theme == 14) {
+                                                $('#rst_imagePreview').show();
+                                                $('#rst_imagePreview img').attr('src', '<?php echo plugin_dir_url(__FILE__) . 'templates/screenshots/theme-14.png'; ?>');
                                             }
                                         });
                                     });

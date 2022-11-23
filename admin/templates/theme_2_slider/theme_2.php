@@ -4,6 +4,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+if ($rst_testimonial_themes == 2) {
 
 wp_enqueue_script('rst_theme_2_script_1', plugin_dir_url(__FILE__) . 'assets/js/slick.min.js', array('jquery'), time(), true);
 
@@ -264,4 +265,4 @@ if ($rst_query_theme_1->have_posts()) {
     <?php
 }
 
-
+}
