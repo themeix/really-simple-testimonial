@@ -4,17 +4,12 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-
 if ($rst_testimonial_themes == 11) {
 
-
     wp_enqueue_script('rst_theme_11_script_1', plugin_dir_url(__FILE__) . 'assets/js/slick.min.js', array('jquery'), time(), true);
-    wp_enqueue_script('rst_theme_11_script_2', plugin_dir_url(__FILE__) . 'assets/js/app.js', array('jquery'), time(), true);
-
 
     wp_enqueue_style('rst_theme_11_style_1', plugin_dir_url(__FILE__) . 'assets/css/slick.css', array(), time(), 'all');
     wp_enqueue_style('rst_theme_11_style_2', plugin_dir_url(__FILE__) . 'assets/css/rst-style-6.css', array(), time(), 'all');
-
 
     $args = array(
         'post_type' => 'rst_testimonial',
@@ -22,20 +17,153 @@ if ($rst_testimonial_themes == 11) {
         'posts_per_page' => $dpstotoal_items,
     );
 
-    $rst_query_theme_1 = new WP_Query($args);
+    $rst_query_theme_11 = new WP_Query($args);
 
-    if ($rst_query_theme_1->have_posts()) {
+    if ($rst_query_theme_11->have_posts()) {
         ?>
 
-        <div class="rst-container">
-            <div class="rst-box-6">
-                <div class="rst-box-wrap rst-border rst-border-coolGray-200 rst-rounded-md rst-p-10 rst-relative">
-                    <div class="thumbs-slider testimonial-style-11-thumbs-slider rst-max-w-62.2 rst-m-auto rst-text-center">
-                        <div class="rst-relative">
-                            <div class="rst-thumbs">
+            <script type="text/javascript">
+                (function ($) {
+                    jQuery(document).ready(function () {
+                        $('.rst_thumb_<?php echo esc_attr($postid); ?>').slick({
+                            slidesToShow: 5,
+                            slidesToScroll: 1,
+                            asNavFor: '.rst_nav_box_<?php echo esc_attr($postid); ?>',
+                            dots: false,
+                            speed: <?php echo $autoplay_speed;?>,
+                            arrows: true,
+                            prevArrow: $('.rst_prev_<?php echo esc_attr($postid); ?>'),
+                            nextArrow: $('.rst_next_<?php echo esc_attr($postid); ?>'),
+                            autoplay: <?php echo $autoplay; ?>,
+                            centerMode: true,
+                            infinite: true,
+                            focusOnSelect: true,
+                            centerPadding: '0px',
+                        });
+
+                        $('.rst_nav_box_<?php echo esc_attr($postid); ?>').slick({
+                            slidesToShow: 1,
+                            arrows: false,
+                            dots: false,
+                            infinite: true,
+                            slidesToScroll: 1,
+                            /*fade: true,*/
+                            cssEase: 'linear',
+                            dots: false,
+                            asNavFor: '.rst_thumb_<?php echo esc_attr($postid); ?>'
+                        });
+                    });
+                })(jQuery);
+            </script>
+
+        <style type="text/css">
+
+            <?php if($navigation == 'false'){?>
+            .rst_<?php echo esc_attr( $postid );?> .rst-arrows {
+                display: none !important;
+            }
+            <?php
+            }
+
+            if ($navigation == 'true'){ ?>
+            .rst_<?php echo esc_attr( $postid );?> .rst-prev {
+                background-color: <?php echo esc_attr( $rst_nav_bg_color )?> !important;
+
+            }
+
+            .rst_<?php echo esc_attr( $postid );?> .rst-prev:hover {
+                background-color: <?php echo esc_attr( $rst_nav_bg_color_hover )?> !important;
+            }
+
+            .rst_<?php echo esc_attr( $postid );?> .rst-next {
+                background-color: <?php echo esc_attr( $rst_nav_bg_color )?> !important;
+
+            }
+
+            .rst_<?php echo esc_attr( $postid );?> .rst-next:hover {
+                background-color: <?php echo esc_attr( $rst_nav_bg_color_hover )?> !important;
+            }
+
+            <?php
+
+            }
+            ?>
+
+
+            .rst_<?php echo esc_attr( $postid );?> .rst_slider_item_thm_11 {
+                border-width: 1px;
+                --tw-border-opacity: 1;
+                <?php if ($rst_show_item_bg_option == 1) { ?>
+                    border-color: <?php echo $rst_item_border_color ?>!important;
+                <?php } else {?>
+                    border-color: rgba(229, 231, 235, var(--tw-border-opacity));
+                <?php }?>
+                border-radius: 10px;
+                padding: 40px;
+                position: relative;
+            }
+
+            .rst_<?php echo esc_attr( $postid );?> .rst_content {
+                display: <?php if($rst_content_show_hide == 2) echo 'none'?> !important;
+                color: <?php echo $rst_content_color; ?> !important;
+                font-size: <?php echo $rst_content_fontsize_option; ?>px !important;
+                background-color: <?php echo $rst_content_bg_color; ?> !important;
+                padding: <?php echo $rst_content_padding; ?>px !important;
+                text-align: <?php echo $rst_testimonial_textalign; ?> !important;
+            }
+
+            .rst_<?php echo esc_attr( $postid );?> .rst_author_name {
+                color: <?php echo $rst_name_color_option; ?> !important;
+                font-size: <?php echo $rst_name_fontsize_option; ?>px !important;
+                text-transform: <?php echo $rst_name_font_case; ?> !important;
+                font-style: <?php echo $rst_name_font_style; ?> !important;
+            }
+
+            .rst_<?php echo esc_attr( $postid );?> .rst_author_position {
+                display: <?php if($rst_designation_show_hide == 2) echo 'none'?> !important;
+                color: <?php echo $rst_designation_color_option; ?> !important;
+                font-size: <?php echo $rst_desig_fontsize_option; ?>px !important;
+                text-transform: <?php echo $rst_designation_case; ?> !important;
+                font-style: <?php echo $rst_designation_font_style; ?> !important;
+            }
+
+            .rst_<?php echo esc_attr( $postid );?> .rst_author_company_name a {
+                display: <?php if($rst_company_show_hide == 2) echo 'none'?> !important;
+                color: <?php echo $rst_company_url_color; ?> !important;
+                text-decoration: none !important;
+            }
+
+            .rst_<?php echo esc_attr( $postid );?> .rst_author_position_separator {
+                display: <?php if($rst_company_show_hide == 2) echo 'none'?> !important;
+            }
+
+            .rst_<?php echo esc_attr( $postid );?> .rst_author_image {
+                display: <?php if($rst_img_show_hide == 2) echo 'none'?> !important;
+                border-radius: <?php echo $rst_img_border_radius; ?> !important;
+                border-width: <?php echo $rst_imgborder_width_option; ?>px !important;
+                border-color: <?php echo $rst_imgborder_color_option; ?> !important;
+                cursor: pointer;
+                margin-top: 8px !important;
+            }
+
+            .rst_<?php echo esc_attr( $postid );?> .rst_rating svg {
+                display: <?php if($rst_show_rating_option == 2) echo 'none'?> !important;
+                fill: <?php echo $rst_rating_color; ?> !important;
+                width: <?php echo $rst_rating_fontsize_option; ?>px !important;
+                height: <?php echo $rst_rating_fontsize_option; ?>px !important;
+            }
+
+        </style>
+
+        <div class="rst_container_thm_11 rst_<?php echo esc_attr($postid); ?>">
+            <div class="rst_box_11 rst_item">
+                <div class="rst_slider_item_thm_11">
+                    <div class="rst_slider_thumbs_thm_11">
+                        <div class="rst_thumbs_position_thm_11">
+                            <div class="rst_thumb_thm_11 rst_thumb_<?php echo esc_attr($postid); ?>">
                                 <?php
-                                while ($rst_query_theme_1->have_posts()) {
-                                    $rst_query_theme_1->the_post();
+                                while ($rst_query_theme_11->have_posts()) {
+                                    $rst_query_theme_11->the_post();
 
                                     $rst_content = get_post_meta(get_the_ID(), 'testimonial_text', true);
                                     $rst_author_position = get_post_meta(get_the_ID(), 'position', true);
@@ -51,10 +179,10 @@ if ($rst_testimonial_themes == 11) {
 
                                     ?>
 
-                                    <div class="rst-thumbs-item">
+                                    <div class="rst_thumb_item_thm_11">
                                         <div class="rst-avtar-images rst-transition-all  rst-relative rst-rounded-full rst-inline-block">
-                                            <img class="rst-w-10 rst-h-10 rst-rounded-full  rst-border-2 rst-border-white"
-                                                 src="<?php echo $rst_author_image2[0]; ?>" alt="testimonial">
+                                            <img class=" rst-h-10 rst-w-10 rst-rounded-full  rst-border-2 rst-border-white rst_author_image"
+                                                 src="<?php echo $rst_author_image2[0]; ?>" alt="testimonial"/>
                                         </div>
                                     </div>
 
@@ -63,34 +191,30 @@ if ($rst_testimonial_themes == 11) {
                                 ?>
 
                             </div>
-                            <div class="rst-arrows ">
-                                <button class="rst-prev">
-                        <span class="rst-inline-block">
-                           <svg width="12" height="21" viewBox="0 0 12 21" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                              <path
-                                      d="M11.9813 3.11569L4.83845 10.2585L11.9813 17.4014L10.5527 20.2585L0.552734 10.2585L10.5527 0.258545L11.9813 3.11569Z"
-                                      fill="#111827"/>
-                           </svg>
-                        </span>
+                            <div class="rst-arrows">
+                                <button class="rst-prev rst_prev_<?php echo esc_attr($postid); ?>">
+                                        <span class="rst_thm_11_flex">
+                                           <svg width="12" height="21" viewBox="0 0 12 21" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                              <path d="M11.9813 3.11569L4.83845 10.2585L11.9813 17.4014L10.5527 20.2585L0.552734 10.2585L10.5527 0.258545L11.9813 3.11569Z" fill="<?php echo $rst_nav_text_color; ?>"/>
+                                           </svg>
+                                        </span>
                                 </button>
-                                <button class="rst-next">
-                        <span class="rst-inline-block">
-                           <svg width="12" height="21" viewBox="0 0 12 21" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                              <path
-                                      d="M0.0191822 3.11569L7.16204 10.2585L0.0191822 17.4014L1.44775 20.2585L11.4478 10.2585L1.44775 0.258545L0.0191822 3.11569Z"
-                                      fill="#111827"/>
-                           </svg>
-                        </span>
+                                <button class="rst-next rst_next_<?php echo esc_attr($postid); ?>">
+                                            <span class="rst_thm_11_flex">
+                                               <svg width="12" height="21" viewBox="0 0 12 21" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                  <path d="M0.0191822 3.11569L7.16204 10.2585L0.0191822 17.4014L1.44775 20.2585L11.4478 10.2585L1.44775 0.258545L0.0191822 3.11569Z" fill="<?php echo $rst_nav_text_color; ?>"/>
+                                               </svg>
+                                            </span>
                                 </button>
                             </div>
                         </div>
                     </div>
-                    <div class="rst-nav-box">
+                    <div class="rst-nav-box rst_nav_box_<?php echo esc_attr($postid); ?>">
                         <?php
-                        while ($rst_query_theme_1->have_posts()) {
-                            $rst_query_theme_1->the_post();
+                        while ($rst_query_theme_11->have_posts()) {
+                            $rst_query_theme_11->the_post();
 
                             $rst_content = get_post_meta(get_the_ID(), 'testimonial_text', true);
                             $rst_author_position = get_post_meta(get_the_ID(), 'position', true);
@@ -104,10 +228,10 @@ if ($rst_testimonial_themes == 11) {
                             ?>
 
                             <div class="slider-item rst-text-center">
-                                <h4 class="author-name rst-text-xl rst-font-bold rst-text-coolGray-900">
+                                <h4 class="author-name rst-text-xl rst-font-bold rst-text-coolGray-900 rst_author_name">
                                     <?php if (!empty($rst_author_name)) echo $rst_author_name; ?>
                                 </h4>
-                                <div class="author-rating rst-flex rst-justify-center">
+                                <div class="author-rating rst-flex rst-justify-center rst_rating">
                                     <?php if (!empty($rst_author_rating)) {
                                         for ($i = 1; $i <= 5; $i++) {
                                             if ($i <= $rst_author_rating) {
@@ -152,7 +276,7 @@ if ($rst_testimonial_themes == 11) {
                                     }
                                     ?>
                                 </div>
-                                <p class="slider-text rst-mt-4 rst-text-coolGray-600">
+                                <p class="slider-text rst-mt-4 rst-text-coolGray-600 rst_content">
                                     <?php if (!empty($rst_content)) {
                                         echo $rst_content;
                                     } ?>

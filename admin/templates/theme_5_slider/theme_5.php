@@ -68,6 +68,10 @@ if ($rst_testimonial_themes == 5) {
         <style type="text/css">
 
             <?php
+
+
+
+
             if($rst_dots == 'true'){ ?>
             .rst_<?php echo esc_attr( $postid );?> .slick-dots button {
                 background-color: <?php echo esc_attr( $rst_dots_inactive_color )?> !important;

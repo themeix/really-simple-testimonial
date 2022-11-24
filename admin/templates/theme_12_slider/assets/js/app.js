@@ -11,7 +11,7 @@
   if ($(".rst-testimonial-box-7 ").length > 0) {
 
     $('.rst-slider').slick({
-      autoplay: true,
+      autoplay: false,
       autoplaySpeed: 2000,
       infinite: true,
       speed: 1000,

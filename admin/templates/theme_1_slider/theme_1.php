@@ -27,37 +27,38 @@ if ($rst_testimonial_themes == 1) {
         ?>
 
         <script type="text/javascript">
-
-            jQuery(document).ready(function () {
-                $('.slider_for_<?php echo esc_attr($postid); ?>').slick({
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    arrows: false,
-                    speed: <?php echo $autoplay_speed;?>,
-                    fade: true,
-                    asNavFor: '.slider_nav_<?php echo esc_attr($postid); ?>',
-                    verticalSwiping: true,
-                    focusOnSelect: true,
-                    accessibility: false,
-                    autoplay: <?php echo $autoplay; ?>,
-                    draggable: false,
+            (function ($) {
+                jQuery(document).ready(function () {
+                    $('.slider_for_<?php echo esc_attr($postid); ?>').slick({
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        arrows: false,
+                        speed: <?php echo $autoplay_speed;?>,
+                        fade: true,
+                        asNavFor: '.slider_nav_<?php echo esc_attr($postid); ?>',
+                        verticalSwiping: true,
+                        focusOnSelect: true,
+                        accessibility: false,
+                        autoplay: <?php echo $autoplay; ?>,
+                        draggable: false,
+                    });
+                    $('.slider_nav_<?php echo esc_attr($postid); ?>').slick({
+                        slidesToShow: <?php echo $item_no ?>,
+                        slidesToScroll: 1,
+                        vertical: true,
+                        asNavFor: '.slider_for_<?php echo esc_attr($postid); ?>',
+                        dots: false,
+                        arrows: false,
+                        speed: <?php echo $autoplay_speed;?>,
+                        verticalSwiping: true,
+                        focusOnSelect: true,
+                        autoplay: <?php echo $autoplay; ?>,
+                        accessibility: false,
+                        draggable: false,
+                    });
                 });
-                $('.slider_nav_<?php echo esc_attr($postid); ?>').slick({
-                    slidesToShow: <?php echo $item_no ?>,
-                    slidesToScroll: 1,
-                    vertical: true,
-                    asNavFor: '.slider_for_<?php echo esc_attr($postid); ?>',
-                    dots: false,
-                    arrows: false,
-                    speed: <?php echo $autoplay_speed;?>,
-                    verticalSwiping: true,
-                    focusOnSelect: true,
-                    autoplay: <?php echo $autoplay; ?>,
-                    accessibility: false,
-                    draggable: false,
-                });
-            });
 
+            })(jQuery);
         </script>
 
 

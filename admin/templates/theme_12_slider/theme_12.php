@@ -9,7 +9,6 @@ if ($rst_testimonial_themes == 12) {
 
 
     wp_enqueue_script('rst_theme_12_script_1', plugin_dir_url(__FILE__) . 'assets/js/slick.min.js', array('jquery'), time(), true);
-    wp_enqueue_script('rst_theme_12_script_2', plugin_dir_url(__FILE__) . 'assets/js/app.js', array('jquery'), time(), true);
 
 
     wp_enqueue_style('rst_theme_12_style_1', plugin_dir_url(__FILE__) . 'assets/css/slick.css', array(), time(), 'all');
@@ -27,17 +26,169 @@ if ($rst_testimonial_themes == 12) {
     if ($rst_query_theme_12->have_posts()) {
         ?>
 
+        <script type="text/javascript">
+            (function ($) {
+                jQuery(document).ready(function () {
+                    $('.rst_slider_<?php echo esc_attr( $postid );?>').slick({
+                        autoplay: <?php echo $autoplay; ?>,
+                        autoplaySpeed: 2000,
+                        infinite: true,
+                        speed: <?php echo $autoplay_speed;?>,
+                        fade: false,
+                        slidesToShow: 2,
+                        arrows: true,
+                        dots: true,
+                        prevArrow: $('.rst_slider_prev_<?php echo esc_attr( $postid );?>'),
+                        nextArrow: $('.rst_slider_next_<?php echo esc_attr( $postid );?>'),
+                        responsive: [{
+                            breakpoint: 1030,
+                            settings: {
+                                slidesToShow: 2
+                            }
+                        },
+                            {
+                                breakpoint: 770,
+                                settings: {
+                                    slidesToShow: 1
+                                }
+                            },
+                            {
+                                breakpoint: 610,
+                                settings: {
+                                    slidesToShow: 1
+                                }
+                            },
+
+                        ]
+                    });
+                });
+            })(jQuery);
+        </script>
+
+
         <style type="text/css">
-            .rst-container{
-                max-width: 80% !important;
+
+            <?php if($navigation == 'false'){?>
+            .rst_<?php echo esc_attr( $postid );?> .slider-arrows {
+                display: none !important;
             }
+            <?php
+            }
+
+            if ($navigation == 'true'){ ?>
+            .rst_<?php echo esc_attr( $postid );?> .slider-arrows .rst-slider-prev {
+                background-color: <?php echo esc_attr( $rst_nav_bg_color )?> !important;
+
+            }
+
+            .rst_<?php echo esc_attr( $postid );?> .slider-arrows .rst-slider-prev:hover {
+                background-color: <?php echo esc_attr( $rst_nav_bg_color_hover )?> !important;
+            }
+
+            .rst_<?php echo esc_attr( $postid );?> .slider-arrows .rst-slider-next {
+                background-color: <?php echo esc_attr( $rst_nav_bg_color )?> !important;
+
+            }
+
+            .rst_<?php echo esc_attr( $postid );?> .slider-arrows .rst-slider-next:hover {
+                background-color: <?php echo esc_attr( $rst_nav_bg_color_hover )?> !important;
+            }
+
+            <?php
+
+            }
+
+            if($rst_dots == 'true'){ ?>
+            .rst_<?php echo esc_attr( $postid );?> .slick-dots button {
+                background-color: <?php echo esc_attr( $rst_dots_inactive_color )?> !important;
+            }
+
+            .rst_<?php echo esc_attr( $postid );?> .slick-active button {
+                background-color: <?php echo esc_attr( $rst_dots_active_color )?> !important;
+            }
+
+            <?php
+            }
+
+            if($rst_dots == 'false'){ ?>
+
+            .rst_<?php echo esc_attr( $postid );?> .slick-dots {
+                display: none !important;
+            }
+            <?php
+            }
+            ?>
+
+
+            .rst_<?php echo esc_attr( $postid );?> .rst_slider_item_thm_12 {
+                border-width: 1px;
+                --tw-border-opacity: 1;
+            <?php if ($rst_show_item_bg_option == 1) { ?>
+                border-color: <?php echo $rst_item_border_color ?>!important;
+            <?php } else {?>
+                border-color: rgba(229, 231, 235, var(--tw-border-opacity));
+            <?php }?>
+                border-radius: <?php echo $rst_item_border_radius?>px!important;
+                padding: 40px!important;
+                position: relative;
+            }
+
+            .rst_<?php echo esc_attr( $postid );?> .rst_content {
+                display: <?php if($rst_content_show_hide == 2) echo 'none'?> !important;
+                color: <?php echo $rst_content_color; ?> !important;
+                font-size: <?php echo $rst_content_fontsize_option; ?>px !important;
+                background-color: <?php echo $rst_content_bg_color; ?> !important;
+                padding: <?php echo $rst_content_padding; ?>px !important;
+                text-align: <?php echo $rst_testimonial_textalign; ?> !important;
+            }
+
+            .rst_<?php echo esc_attr( $postid );?> .rst_author_name {
+                color: <?php echo $rst_name_color_option; ?> !important;
+                font-size: <?php echo $rst_name_fontsize_option; ?>px !important;
+                text-transform: <?php echo $rst_name_font_case; ?> !important;
+                font-style: <?php echo $rst_name_font_style; ?> !important;
+            }
+
+            .rst_<?php echo esc_attr( $postid );?> .rst_author_position {
+                display: <?php if($rst_designation_show_hide == 2) echo 'none'?> !important;
+                color: <?php echo $rst_designation_color_option; ?> !important;
+                font-size: <?php echo $rst_desig_fontsize_option; ?>px !important;
+                text-transform: <?php echo $rst_designation_case; ?> !important;
+                font-style: <?php echo $rst_designation_font_style; ?> !important;
+            }
+
+            .rst_<?php echo esc_attr( $postid );?> .rst_author_company_name a {
+                display: <?php if($rst_company_show_hide == 2) echo 'none'?> !important;
+                color: <?php echo $rst_company_url_color; ?> !important;
+                text-decoration: none !important;
+            }
+
+            .rst_<?php echo esc_attr( $postid );?> .rst_author_position_separator {
+                display: <?php if($rst_company_show_hide == 2) echo 'none'?> !important;
+            }
+
+            .rst_<?php echo esc_attr( $postid );?> .rst_author_image {
+                display: <?php if($rst_img_show_hide == 2) echo 'none'?> !important;
+                border-radius: <?php echo $rst_img_border_radius; ?> !important;
+                border-width: <?php echo $rst_imgborder_width_option; ?>px !important;
+                border-color: <?php echo $rst_imgborder_color_option; ?> !important;
+                cursor: pointer;
+                margin-top: 8px !important;
+            }
+
+            .rst_<?php echo esc_attr( $postid );?> .rst_rating svg {
+                display: <?php if($rst_show_rating_option == 2) echo 'none'?> !important;
+                fill: <?php echo $rst_rating_color; ?> !important;
+                width: <?php echo $rst_rating_fontsize_option; ?>px !important;
+                height: <?php echo $rst_rating_fontsize_option; ?>px !important;
+            }
+
         </style>
 
+        <div class="rst_container_thm_12 rst_<?php echo esc_attr( $postid );?>">
 
-        <div class="rst-container pt-28">
-
-            <div class="rst-testimonial-box-7 relative">
-                <div class="rst-slider">
+            <div class="rst-testimonial-box-7 relative rst_testi_box_thm_12">
+                <div class="rst-slider rst_slider_<?php echo esc_attr( $postid );?>">
         <?php
         while ($rst_query_theme_12->have_posts()) {
             $rst_query_theme_12->the_post();
@@ -58,22 +209,20 @@ if ($rst_testimonial_themes == 12) {
 
             ?>
 
-
-
-                    <div class="rst-item border rounded-md p-10">
+                    <div class="rst-item border rounded-md p-10 rst_slider_item_thm_12">
                         <div class="rs-author-box md:flex mb-6">
                             <div class="flex-col mr-4">
                                 <div class="rst-author-images">
-                                    <img class="h-25 w-25 rounded-full border border-red-500" src="<?php echo $rst_author_image2[0]; ?>"
+                                    <img class="h-25 w-25 rounded-full border border-red-500 rst_author_image" src="<?php echo $rst_author_image2[0]; ?>"
                                          alt="author">
                                 </div>
                             </div>
-                            <div class="flex-col">
-                                <h4 class="rst-author-name text-xl font-bold text-coolGray-900"><?php if (!empty($rst_author_name)) echo $rst_author_name; ?></h4>
+                            <div class="flex-col rst_author_zone">
+                                <h4 class="rst-author-name text-xl font-bold text-coolGray-900 rst_author_name"><?php if (!empty($rst_author_name)) echo $rst_author_name; ?></h4>
                                 <p class="rst-author-title text-coolGray-600  text-base">
                                     <span class="rst_author_position"><?php if (!empty($rst_author_position)) echo $rst_author_position; ?></span>
                                 </p>
-                                <div class="rst-author-rating flex   mt-4">
+                                <div class="rst-author-rating flex mt-4 rst_rating">
                                     <?php if (!empty($rst_author_rating)) {
                                         for ($i = 1; $i <= 5; $i++) {
                                             if ($i <= $rst_author_rating) {
@@ -130,7 +279,7 @@ if ($rst_testimonial_themes == 12) {
                                           fill="#D4D4D8" />
                                 </svg>
                             </div>
-                            <p class=" text-coolGray-600 text-base rst-description font-normal mb-4">
+                            <p class=" text-coolGray-600 text-base rst-description font-normal mb-4 rst_content">
                                 <?php if (!empty($rst_content)) {
                                     echo $rst_content;
                                 } ?>
@@ -139,7 +288,7 @@ if ($rst_testimonial_themes == 12) {
                         </div>
 
 
-                        <div class="rst-author-social-link flex">
+                        <div class="rst-author-social-link rst_author_soc_link_12">
                             <?php
 
                             foreach ($rst_socila_link as $item) {
@@ -148,7 +297,7 @@ if ($rst_testimonial_themes == 12) {
                                     ?>
                                     <!--facebook-->
                                     <div class="flex-col mr-1">
-                                        <a href="<?php echo $item['tdesc']; ?>"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                        <a href="<?php echo $item['tdesc']; ?>" target="_blank"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"
                                                          xmlns="http://www.w3.org/2000/svg">
                                                 <path
                                                         d="M14.4 0H0.6C0.268125 0 0 0.268125 0 0.6V14.4C0 14.7319 0.268125 15 0.6 15H14.4C14.7319 15 15 14.7319 15 14.4V0.6C15 0.268125 14.7319 0 14.4 0ZM12.6675 4.37813H11.4694C10.53 4.37813 10.3481 4.82437 10.3481 5.48062V6.92625H12.5906L12.2981 9.18937H10.3481V15H8.01V9.19125H6.05438V6.92625H8.01V5.2575C8.01 3.32062 9.19313 2.265 10.9219 2.265C11.7506 2.265 12.4613 2.32688 12.6694 2.355V4.37813H12.6675Z"
@@ -162,7 +311,7 @@ if ($rst_testimonial_themes == 12) {
                                     ?>
                                     <!--twitter-->
                                     <div class="flex-col mr-1">
-                                        <a href="<?php echo $item['tdesc']; ?>"><svg width="19" height="15" viewBox="0 0 19 15" fill="none"
+                                        <a href="<?php echo $item['tdesc']; ?>" target="_blank"><svg width="19" height="15" viewBox="0 0 19 15" fill="none"
                                                          xmlns="http://www.w3.org/2000/svg">
                                                 <path
                                                         d="M18.4575 1.77567C17.7783 2.07682 17.0485 2.28036 16.2825 2.37193C17.0644 1.90328 17.6648 1.16116 17.9475 0.276934C17.2042 0.718028 16.3909 1.02881 15.5429 1.19584C14.8521 0.459922 13.868 0 12.7788 0C10.6875 0 8.99195 1.69549 8.99195 3.78666C8.99195 4.0835 9.02548 4.37247 9.09001 4.64969C5.94287 4.49172 3.15262 2.9842 1.28488 0.693164C0.958995 1.25244 0.772257 1.90299 0.772257 2.59688C0.772257 3.91067 1.44084 5.06967 2.45686 5.74878C1.85551 5.72994 1.2674 5.56753 0.741615 5.27508C0.741399 5.29095 0.741399 5.30681 0.741399 5.32274C0.741399 7.15746 2.04669 8.68798 3.77895 9.03586C3.22132 9.18752 2.63641 9.20971 2.06889 9.10075C2.55073 10.6052 3.94925 11.6999 5.60624 11.7306C4.31025 12.7462 2.67741 13.3516 0.903334 13.3516C0.597632 13.3516 0.296257 13.3336 0 13.2987C1.67581 14.3731 3.66626 15 5.80473 15C12.77 15 16.5788 9.22981 16.5788 4.22582C16.5788 4.06158 16.5752 3.89827 16.5679 3.7359C17.3092 3.19998 17.9491 2.53618 18.4575 1.77567Z"
@@ -176,7 +325,7 @@ if ($rst_testimonial_themes == 12) {
                                     ?>
                                     <!--Instragram-->
                                     <div class="flex-col mr-1">
-                                        <a href="<?php echo $item['tdesc']; ?>"><svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                        <a href="<?php echo $item['tdesc']; ?>" target="_blank"><svg width="16" height="15" viewBox="0 0 16 15" fill="none"
                                                          xmlns="http://www.w3.org/2000/svg">
                                                 <path
                                                         d="M7.95242 3.53593C8.50313 3.53593 9.02025 3.63667 9.5038 3.83815C9.98734 4.03962 10.4104 4.32169 10.7731 4.68435C11.1358 5.04701 11.4178 5.47011 11.6193 5.95366C11.8208 6.43721 11.9215 6.95433 11.9215 7.50504C11.9215 8.05574 11.8208 8.56615 11.6193 9.03627C11.4178 9.50638 11.1358 9.92948 10.7731 10.3056C10.4104 10.6817 9.98734 10.9637 9.5038 11.1518C9.02025 11.3398 8.50313 11.4473 7.95242 11.4741C7.40172 11.501 6.88459 11.3936 6.40104 11.1518C5.9175 10.91 5.50111 10.6279 5.15188 10.3056C4.80266 9.98321 4.52059 9.56011 4.30568 9.03627C4.09077 8.51242 3.98331 8.00201 3.98331 7.50504C3.98331 7.00806 4.09077 6.49093 4.30568 5.95366C4.52059 5.41639 4.80266 4.99328 5.15188 4.68435C5.50111 4.37542 5.9175 4.09335 6.40104 3.83815C6.88459 3.58294 7.40172 3.4822 7.95242 3.53593ZM7.95242 10.0638C8.30165 10.0638 8.63073 9.99664 8.93966 9.86232C9.24859 9.72801 9.52395 9.54668 9.76572 9.31833C10.0075 9.08999 10.1888 8.81464 10.3097 8.49228C10.4306 8.16991 10.4978 7.84083 10.5112 7.50504C10.5246 7.16924 10.4575 6.83345 10.3097 6.49765C10.162 6.16185 9.98063 5.8865 9.76572 5.67159C9.55081 5.45668 9.27546 5.27535 8.93966 5.1276C8.60387 4.97985 8.27479 4.91269 7.95242 4.92612C7.63006 4.93956 7.30098 5.00672 6.96518 5.1276C6.62939 5.24849 6.35403 5.42982 6.13912 5.67159C5.92421 5.91336 5.74288 6.18872 5.59513 6.49765C5.44738 6.80658 5.38023 7.14238 5.39366 7.50504C5.40709 7.8677 5.47425 8.19678 5.59513 8.49228C5.71602 8.78778 5.89735 9.06313 6.13912 9.31833C6.3809 9.57354 6.65625 9.75487 6.96518 9.86232C7.27411 9.96978 7.60319 10.0369 7.95242 10.0638ZM15.3668 3.73741C15.4877 6.24916 15.4877 8.76091 15.3668 11.2727C15.3399 11.7562 15.2258 12.2129 15.0243 12.6427C14.8228 13.0725 14.5609 13.4486 14.2385 13.771C13.9162 14.0934 13.5333 14.362 13.0901 14.5769C12.6468 14.7918 12.1902 14.906 11.7201 14.9194C11.0888 14.9463 10.4642 14.9664 9.84631 14.9799C9.22845 14.9933 8.59715 15 7.95242 15C7.30769 15 6.68311 14.9933 6.07868 14.9799C5.47425 14.9664 4.84295 14.9463 4.18479 14.9194C3.70125 14.8925 3.24456 14.7784 2.81475 14.5769C2.38493 14.3754 2.00884 14.1068 1.68647 13.771C1.36411 13.4352 1.09547 13.0591 0.880561 12.6427C0.665652 12.2263 0.551481 11.7696 0.538049 11.2727C0.430595 8.76091 0.430595 6.24916 0.538049 3.73741C0.564913 3.25386 0.679084 2.79718 0.880561 2.36736C1.08204 1.93754 1.35068 1.55473 1.68647 1.21894C2.02227 0.883143 2.39836 0.621222 2.81475 0.433177C3.23113 0.245131 3.68781 0.13096 4.18479 0.0906649C6.69655 -0.0302216 9.2083 -0.0302216 11.7201 0.0906649C12.2036 0.117529 12.6603 0.231699 13.0901 0.433177C13.5199 0.634654 13.9027 0.896575 14.2385 1.21894C14.5743 1.5413 14.8362 1.92411 15.0243 2.36736C15.2123 2.81061 15.3265 3.26729 15.3668 3.73741ZM13.9565 11.1921C14.0773 8.73405 14.0773 6.26931 13.9565 3.79785C13.943 3.50235 13.8691 3.22028 13.7348 2.95165C13.6005 2.68301 13.4326 2.44124 13.2311 2.22633C13.0297 2.01142 12.7879 1.8368 12.5058 1.70248C12.2237 1.56817 11.9417 1.49429 11.6596 1.48086C11.0417 1.454 10.4239 1.43385 9.80601 1.42042C9.18815 1.40698 8.57029 1.40027 7.95242 1.40027C7.33456 1.40027 6.71669 1.40698 6.09883 1.42042C5.48096 1.43385 4.8631 1.454 4.24524 1.48086C3.94974 1.49429 3.66767 1.56817 3.39903 1.70248C3.13039 1.8368 2.89534 2.01142 2.69386 2.22633C2.49238 2.44124 2.31777 2.68301 2.17002 2.95165C2.02227 3.22028 1.94839 3.50235 1.94839 3.79785C1.82751 6.26931 1.82751 8.74077 1.94839 11.2122C1.96182 11.5077 2.0357 11.7898 2.17002 12.0584C2.30434 12.3271 2.47895 12.5621 2.69386 12.7636C2.90877 12.9651 3.14383 13.1397 3.39903 13.2874C3.65423 13.4352 3.9363 13.5091 4.24524 13.5091C6.71669 13.63 9.18815 13.63 11.6596 13.5091C11.9551 13.4956 12.2372 13.4218 12.5058 13.2874C12.7744 13.1531 13.0162 12.9785 13.2311 12.7636C13.446 12.5487 13.6139 12.3069 13.7348 12.0383C13.8557 11.7696 13.9296 11.4876 13.9565 11.1921ZM11.9215 2.64943C12.1633 2.64943 12.3715 2.73674 12.5461 2.91135C12.7207 3.08596 12.808 3.29416 12.808 3.53593C12.808 3.7777 12.7207 3.9859 12.5461 4.16051C12.3715 4.33512 12.1633 4.42243 11.9215 4.42243C11.6798 4.42243 11.4716 4.33512 11.2969 4.16051C11.1223 3.9859 11.035 3.7777 11.035 3.53593C11.035 3.29416 11.1223 3.08596 11.2969 2.91135C11.4716 2.73674 11.6798 2.64943 11.9215 2.64943Z"
@@ -197,7 +346,7 @@ if ($rst_testimonial_themes == 12) {
                                     ?>
                                     <!--Linkdedin-->
                                     <div class="flex-col">
-                                        <a href="<?php echo $item['tdesc']; ?>"><svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                        <a href="<?php echo $item['tdesc']; ?>" target="_blank"><svg width="16" height="15" viewBox="0 0 16 15" fill="none"
                                                          xmlns="http://www.w3.org/2000/svg">
                                                 <path
                                                         d="M13.2382 12.7809H11.0156V9.30027C11.0156 8.47029 11.0008 7.40183 9.8597 7.40183C8.70212 7.40183 8.52499 8.30617 8.52499 9.23986V12.7807H6.30253V5.6231H8.43611V6.60127H8.46599C8.67951 6.23617 8.98806 5.93582 9.35877 5.73221C9.72949 5.5286 10.1485 5.42935 10.5711 5.44504C12.8238 5.44504 13.2391 6.92675 13.2391 8.85437L13.2382 12.7809ZM3.79472 4.64476C3.0824 4.64488 2.50484 4.0675 2.50472 3.35517C2.50461 2.64285 3.08193 2.06529 3.79425 2.06517C4.50658 2.065 5.08414 2.64238 5.08425 3.3547C5.08432 3.69678 4.94849 4.02486 4.70666 4.26679C4.46483 4.50873 4.1368 4.64468 3.79472 4.64476ZM4.90601 12.781H2.68115V5.6231H4.90595V12.7809L4.90601 12.781ZM14.3462 0.00109171H1.56435C0.960251 -0.00570516 0.464841 0.47822 0.457458 1.08232V13.9175C0.464607 14.5218 0.959958 15.0062 1.56429 14.9999H14.3462C14.9518 15.0074 15.4491 14.523 15.4575 13.9175V1.08133C15.4488 0.476052 14.9515 -0.00781453 14.3462 9.56187e-05"
@@ -219,24 +368,22 @@ if ($rst_testimonial_themes == 12) {
             <?php } ?>
 
                 </div>
-                <div class="slider-arrows hidden xl:block">
-                    <button class="rst-slider-prev">
-               <span class="!inline-block">
-                  <svg width="12" height="21" viewBox="0 0 12 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                     <path
-                         d="M11.9813 3.22433L4.83845 10.3672L11.9813 17.51L10.5527 20.3672L0.552734 10.3672L10.5527 0.367188L11.9813 3.22433Z"
-                         fill="#6B7280" />
-                  </svg>
-               </span>
+                <div class="slider-arrows rst_thm_12_hidden xl:block">
+                    <button class="rst-slider-prev rst_slider_prev_<?php echo esc_attr( $postid );?>">
+                       <span class="!inline-block">
+                          <svg width="12" height="21" viewBox="0 0 12 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                             <path d="M11.9813 3.22433L4.83845 10.3672L11.9813 17.51L10.5527 20.3672L0.552734 10.3672L10.5527 0.367188L11.9813 3.22433Z"
+                                 fill="<?php echo $rst_nav_text_color; ?>" />
+                          </svg>
+                       </span>
                     </button>
-                    <button class="rst-slider-next">
-               <span class="!inline-block">
-                  <svg width="12" height="21" viewBox="0 0 12 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                     <path
-                         d="M0.0191822 3.22433L7.16204 10.3672L0.0191822 17.51L1.44775 20.3672L11.4478 10.3672L1.44775 0.367188L0.0191822 3.22433Z"
-                         fill="#6B7280" />
-                  </svg>
-               </span>
+                    <button class="rst-slider-next rst_slider_next_<?php echo esc_attr( $postid );?>">
+                       <span class="!inline-block">
+                          <svg width="12" height="21" viewBox="0 0 12 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                             <path d="M0.0191822 3.22433L7.16204 10.3672L0.0191822 17.51L1.44775 20.3672L11.4478 10.3672L1.44775 0.367188L0.0191822 3.22433Z"
+                                 fill="<?php echo $rst_nav_text_color; ?>" />
+                          </svg>
+                       </span>
                     </button>
                 </div>
             </div>

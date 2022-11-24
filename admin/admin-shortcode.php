@@ -205,7 +205,8 @@ function rst_testimonials_display_post_type_func($post, $args)
     $filter_menu_font_color_hover = ($filter_menu_font_color_hover) ? $filter_menu_font_color_hover : '#ffffff';
     $filter_menu_font_color_active = ($filter_menu_font_color_active) ? $filter_menu_font_color_active : '#ffffff';
     $nav_text_color_hover = ($nav_text_color_hover) ? $nav_text_color_hover : '#020202';
-    $nav_bg_color_hover = ($nav_bg_color_hover) ? $nav_bg_color_hover : '#dddddd';
+    $nav_bg_color_hover = ($nav_bg_color_hover) ? $nav_bg_color_hover : '#F43F5E';
+    $nav_bg_color = ($nav_bg_color) ? $nav_bg_color : '#f2bccc';
     $pagination_bg_color_active = ($pagination_bg_color_active) ? $pagination_bg_color_active : '#9e9e9e';
     $navigation_style = ($navigation_style) ? $navigation_style : '0';
     $pagination_style = ($pagination_style) ? $pagination_style : '0';
@@ -572,7 +573,7 @@ function rst_testimonials_display_post_type_func($post, $args)
                                         <label for="radio-three"><?php _e('Left', 'rst_testimonial_pro'); ?><span
                                                     class="mark"><?php _e('Pro', 'logoshowcase'); ?></span></label>
                                         <input type="radio" id="radio-four" name="rst_testimonial_textalign"
-                                               value="center" <?php if ($rst_testimonial_textalign == 'center' || $rst_testimonial_textalign == '') {
+                                               value="center" <?php if ($rst_testimonial_textalign == 'center') {
                                             echo 'checked';
                                         } ?>/>
                                         <label for="radio-four"><?php _e('Center', 'rst_testimonial_pro'); ?></label>
@@ -622,7 +623,7 @@ function rst_testimonials_display_post_type_func($post, $args)
                                            value="<?php if ($rst_name_fontsize_option != '') {
                                                echo $rst_name_fontsize_option;
                                            } else {
-                                               echo '18';
+                                               echo '20';
                                            } ?>"> <br/>
                                     <span class="rststestimonial_manager_hint"><?php echo __('Choose a font size for testimonial name.', 'rst_testimonial_pro'); ?></span>
                                 </td>
@@ -716,7 +717,7 @@ function rst_testimonials_display_post_type_func($post, $args)
                                            value="<?php if ($rst_imgborder_width_option != '') {
                                                echo $rst_imgborder_width_option;
                                            } else {
-                                               echo 0;
+                                               echo 1;
                                            } ?>">
                                 </td>
                             </tr> <!-- End of image border width -->
@@ -732,7 +733,7 @@ function rst_testimonials_display_post_type_func($post, $args)
                                            value="<?php if ($rst_imgborder_color_option != '') {
                                                echo $rst_imgborder_color_option;
                                            } else {
-                                               echo "#f5f5f5";
+                                               echo "transparent";
                                            } ?>" class="timezone_string">
                                     <span class="rststestimonial_manager_hint"><?php echo __('Pick a color for image border.', 'rst_testimonial_pro'); ?></span>
                                 </td>
@@ -749,8 +750,9 @@ function rst_testimonials_display_post_type_func($post, $args)
                                             class="timezone_string">
 
                                         <option value="50%" <?php if (isset ($rst_img_border_radius)) {
-                                            selected($rst_img_border_radius, '50%');
-                                        } ?>><?php _e('50%', 'rst_testimonial_pro') ?></option>
+                                            selected($rst_img_border_radius, '100%');
+                                        } ?>><?php _e('100%', 'rst_testimonial_pro') ?></option>
+
 
                                         <option value="0%" <?php if (isset ($rst_img_border_radius)) {
                                             selected($rst_img_border_radius, '0%');
@@ -776,14 +778,15 @@ function rst_testimonials_display_post_type_func($post, $args)
                                             selected($rst_img_border_radius, '40%');
                                         } ?>><?php _e('40%', 'rst_testimonial_pro') ?></option>
 
+                                        <option value="50%" <?php if (isset ($rst_img_border_radius)) {
+                                            selected($rst_img_border_radius, '50%');
+                                        } ?>><?php _e('50%', 'rst_testimonial_pro') ?></option>
 
                                         <option value="80%" <?php if (isset ($rst_img_border_radius)) {
                                             selected($rst_img_border_radius, '80%');
                                         } ?>><?php _e('80%', 'rst_testimonial_pro') ?></option>
 
-                                        <option value="50%" <?php if (isset ($rst_img_border_radius)) {
-                                            selected($rst_img_border_radius, '100%');
-                                        } ?>><?php _e('100%', 'rst_testimonial_pro') ?></option>
+
                                     </select>
                                     <span class="rststestimonial_manager_hint"><?php echo __('Select an option for border radius of the images.', 'rst_testimonial_pro'); ?></span>
                                 </td>
@@ -837,7 +840,7 @@ function rst_testimonials_display_post_type_func($post, $args)
                                            value="<?php if ($rst_desig_fontsize_option != '') {
                                                echo $rst_desig_fontsize_option;
                                            } else {
-                                               echo '15';
+                                               echo '16';
                                            } ?>"> <br/>
                                     <span class="rststestimonial_manager_hint"><?php echo __('Choose a font size for testimonial designation.', 'rst_testimonial_pro'); ?></span>
                                 </td>
@@ -1024,7 +1027,7 @@ function rst_testimonials_display_post_type_func($post, $args)
                                            value="<?php if ($rst_content_color != '') {
                                                echo $rst_content_color;
                                            } else {
-                                               echo "#666666";
+                                               echo "#000000";
                                            } ?>" class="timezone_string">
                                     <span class="rststestimonial_manager_hint"><?php echo __('Pick a color for testimonial message.', 'rst_testimonial_pro'); ?></span>
                                 </td>
@@ -1045,7 +1048,7 @@ function rst_testimonials_display_post_type_func($post, $args)
                                            required value="<?php if ($rst_content_fontsize_option != '') {
                                         echo $rst_content_fontsize_option;
                                     } else {
-                                        echo '15';
+                                        echo '16';
                                     } ?>"> <br/>
                                     <span class="rststestimonial_manager_hint"><?php echo __('Choose a font size for testimonial message.', 'rst_testimonial_pro'); ?></span>
                                 </td>
@@ -1065,7 +1068,7 @@ function rst_testimonials_display_post_type_func($post, $args)
                                            value="<?php if ($rst_content_bg_color != '') {
                                                echo $rst_content_bg_color;
                                            } else {
-                                               echo "#ffffff";
+                                               echo "transparent";
                                            } ?>" class="timezone_string">
                                     <span class="rststestimonial_manager_hint"><?php echo __('Pick a color for content background.', 'rst_testimonial_pro'); ?></span>
                                 </td>
@@ -1201,7 +1204,7 @@ function rst_testimonials_display_post_type_func($post, $args)
                                            required value="<?php if ($rst_rating_fontsize_option != '') {
                                         echo $rst_rating_fontsize_option;
                                     } else {
-                                        echo '15';
+                                        echo '16';
                                     } ?>"> <br/>
                                     <span class="rststestimonial_manager_hint"><?php echo __('Choose a font size for testimonial ratings.', 'rst_testimonial_pro'); ?></span>
                                 </td>
@@ -1342,7 +1345,7 @@ function rst_testimonials_display_post_type_func($post, $args)
                                            value="<?php if ($rst_item_border_color != '') {
                                                echo $rst_item_border_color;
                                            } else {
-                                               echo "transparent";
+                                               echo "#E8E8E8";
                                            } ?>" class="timezone_string">
                                     <span class="rststestimonial_manager_hint"><?php echo __('Pick a color for item border.', 'rst_testimonial_pro'); ?></span>
                                 </td>
@@ -1483,7 +1486,7 @@ function rst_testimonials_display_post_type_func($post, $args)
                                            value="<?php if ($rst_dots_text_color != '') {
                                                echo $rst_dots_text_color;
                                            } else {
-                                               echo "#020202";
+                                               echo "#f2bccc";
                                            } ?>" class="timezone_string">
                                     <span class="rststestimonial_manager_hint"><?php echo __('Pick a color for Inactive Dots.', 'rst_testimonial_pro'); ?></span>
                                 </td>
@@ -1501,7 +1504,7 @@ function rst_testimonials_display_post_type_func($post, $args)
                                            value="<?php if ($rst_dots_bg_color != '') {
                                                echo $rst_dots_bg_color;
                                            } else {
-                                               echo "#f5f5f5";
+                                               echo "#e45a7e";
                                            } ?>" class="timezone_string">
                                     <span class="rststestimonial_manager_hint"><?php echo __('Pick a color for Active dots.', 'rst_testimonial_pro'); ?></span>
                                 </td>
@@ -1560,7 +1563,7 @@ function rst_testimonials_display_post_type_func($post, $args)
                                            value="<?php if ($nav_text_color != '') {
                                                echo $nav_text_color;
                                            } else {
-                                               echo "#020202";
+                                               echo "#E8E8E8";
                                            } ?>" class="timezone_string">
                                     <span class="rststestimonial_manager_hint"><?php echo __('Pick a color for navigation tool.', 'rst_testimonial_pro'); ?></span>
                                 </td>
@@ -1578,7 +1581,7 @@ function rst_testimonials_display_post_type_func($post, $args)
                                            value="<?php if ($nav_bg_color != '') {
                                                echo $nav_bg_color;
                                            } else {
-                                               echo "#f5f5f5";
+                                               echo "#f2bccc";
                                            } ?>" class="timezone_string">
                                     <span class="rststestimonial_manager_hint"><?php echo __('Pick a color for background of navigation tool.', 'rst_testimonial_pro'); ?></span>
                                 </td>
@@ -1597,7 +1600,7 @@ function rst_testimonials_display_post_type_func($post, $args)
                                            value="<?php if ($nav_bg_color_hover != '') {
                                                echo $nav_bg_color_hover;
                                            } else {
-                                               echo "#f5f5f5";
+                                               echo "#F43F5E";
                                            } ?>" class="timezone_string">
                                     <span class="rststestimonial_manager_hint"><?php echo __('Pick a color for background of navigation tool in hover.', 'rst_testimonial_pro'); ?></span>
                                 </td>
