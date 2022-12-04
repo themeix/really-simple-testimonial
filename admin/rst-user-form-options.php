@@ -6,29 +6,95 @@ if (!defined('ABSPATH')) {
 }
 
 // Saving Selected fields data in option table
-if (isset($_POST['rst_save_btn'])) {
+add_action('admin_init', 'rst_save_user_form_options');
 
-    // saving seleceted options
-    update_option('rst_user_fields', $_POST['rstoptions']);
-    // saving fields custom name
-    update_option('rst_user_title', $_POST['rst_user_title']);
-    update_option('rst_user_name', $_POST['rst_user_name']);
-    update_option('rst_user_designation', $_POST['rst_user_designation']);
-    update_option('rst_user_company_name', $_POST['rst_user_company_name']);
-    update_option('rst_user_company_url', $_POST['rst_user_company_url']);
-    update_option('rst_user_rating', $_POST['rst_user_rating']);
-    update_option('rst_user_testi_text', $_POST['rst_user_testi_text']);
-    update_option('rst_user_categories', $_POST['rst_user_categories']);
-    update_option('rst_user_logo_img', $_POST['rst_user_logo_img']);
-    update_option('rst_user_calculate', $_POST['rst_user_calculate']);
-    update_option('rst_post_status', $_POST['rst_post_status']);
-    update_option('rst_user_submit_btn_text', $_POST['rst_user_submit_btn_text']);
-    // saving error and success messages
-    update_option('rst_save_success_text', $_POST['rst_save_success_text']);
-    update_option('rst_save_error_text', $_POST['rst_save_error_text']);
-    update_option('rst_file_mishmatch_text', $_POST['rst_file_mishmatch_text']);
-    update_option('rst_calc_error_text', $_POST['rst_calc_error_text']);
+function rst_save_user_form_options(){
+
+
+    if (isset($_POST['rst_save_btn'])) {
+
+
+        if(!isset($_POST['rst_user_form_nonce']) || !wp_verify_nonce($_POST['rst_user_form_nonce'], 'rst_user_form_action')) {
+            return;
+        } else {
+
+            if (isset($_POST['rstoptions'])) {
+                update_option('rst_user_fields', array_map('sanitize_text_field', $_POST['rstoptions']));
+            }
+
+
+            if (isset($_POST['rst_user_title'])) {
+                update_option('rst_user_title', sanitize_text_field($_POST['rst_user_title']));
+            }
+
+            if (isset($_POST['rst_user_name'])) {
+                update_option('rst_user_name', sanitize_text_field($_POST['rst_user_name']));
+            }
+
+            if (isset($_POST['rst_user_designation'])) {
+                update_option('rst_user_designation', sanitize_text_field($_POST['rst_user_designation']));
+            }
+
+            if (isset($_POST['rst_user_company_name'])) {
+                update_option('rst_user_company_name', sanitize_text_field($_POST['rst_user_company_name']));
+            }
+
+
+            if (isset($_POST['rst_user_company_url'])) {
+                update_option('rst_user_company_url', sanitize_text_field($_POST['rst_user_company_url']));
+            }
+
+            if (isset($_POST['rst_user_rating'])) {
+                update_option('rst_user_rating', sanitize_text_field($_POST['rst_user_rating']));
+            }
+
+            if (isset($_POST['rst_user_testi_text'])) {
+                update_option('rst_user_testi_text', sanitize_text_field($_POST['rst_user_testi_text']));
+            }
+
+            if (isset($_POST['rst_user_categories'])) {
+                update_option('rst_user_categories', sanitize_text_field($_POST['rst_user_categories']));
+            }
+
+
+            if (isset($_POST['rst_user_logo_img'])) {
+                update_option('rst_user_logo_img', sanitize_text_field($_POST['rst_user_logo_img']));
+            }
+
+            if (isset($_POST['rst_user_calculate'])) {
+                update_option('rst_user_calculate', sanitize_text_field($_POST['rst_user_calculate']));
+            }
+
+            if (isset($_POST['rst_post_status'])) {
+                update_option('rst_post_status', sanitize_text_field($_POST['rst_post_status']));
+            }
+
+            if (isset($_POST['rst_user_submit_btn_text'])) {
+                update_option('rst_user_submit_btn_text', sanitize_text_field($_POST['rst_user_submit_btn_text']));
+            }
+
+            if (isset($_POST['rst_save_success_text'])) {
+                update_option('rst_save_success_text', sanitize_text_field($_POST['rst_save_success_text']));
+            }
+
+            if (isset($_POST['rst_save_error_text'])) {
+                update_option('rst_save_error_text', sanitize_text_field($_POST['rst_save_error_text']));
+            }
+
+            if (isset($_POST['rst_file_mishmatch_text'])) {
+                update_option('rst_file_mishmatch_text', sanitize_text_field($_POST['rst_file_mishmatch_text']));
+            }
+
+            if (isset($_POST['rst_calc_error_text'])) {
+                update_option('rst_calc_error_text', sanitize_text_field($_POST['rst_calc_error_text']));
+            }
+        }
+
+    }
+
 }
+
+
 
 
 // Check whether a field is selected or not
@@ -45,9 +111,9 @@ function rst_user_fields_name($field, $default)
 {
     $field_name = get_option($field);
     if (isset($field_name) && !empty($field_name)) {
-        echo $field_name;
+        echo esc_attr($field_name);
     } else {
-        echo $default;
+        echo esc_attr($default);
     }
 }
 
@@ -76,6 +142,7 @@ add_action('admin_menu', 'rst_register_testimonial_user_options');
 function rst_testimonial_user_options_page_layouts()
 {
     $rst_post_status = get_option('rst_post_status');
+
     ?>
     <div class="wrap">
         <h1><?php _e('Testimonial Submission Form :', 'rst_testimonial_pro'); ?></h1>
@@ -90,6 +157,8 @@ function rst_testimonial_user_options_page_layouts()
 
         <h3 style="color:red;"><?php _e('Available Only Premium Version:', 'rst_testimonial_pro'); ?></h3>
         <form method="post" action="">
+            <?php wp_nonce_field('rst_user_form_action', 'rst_user_form_nonce'); ?>
+
             <table>
                 <tr>
                     <td>
@@ -236,7 +305,7 @@ function rst_testimonial_user_options_page_layouts()
                     </td>
                     <td>
                         <textarea id="rst_save_success_text" rows="4" cols="50"
-                                  name="rst_save_success_text"><?php echo rst_user_retrive_messages('rst_save_success_text', 'Thank you for your valuable comments. Stay with us.'); ?></textarea>
+                                  name="rst_save_success_text"><?php echo esc_attr(rst_user_retrive_messages('rst_save_success_text', 'Thank you for your valuable comments. Stay with us.')); ?></textarea>
                     </td>
                 </tr>
                 <tr>
@@ -245,7 +314,7 @@ function rst_testimonial_user_options_page_layouts()
                     </td>
                     <td>
                         <textarea id="rst_save_error_text" rows="4" cols="50"
-                                  name="rst_save_error_text"><?php echo rst_user_retrive_messages('rst_save_error_text', 'Please fill-up all the info again.'); ?></textarea>
+                                  name="rst_save_error_text"><?php echo esc_attr(rst_user_retrive_messages('rst_save_error_text', 'Please fill-up all the info again.')); ?></textarea>
                     </td>
                 </tr>
                 <tr>
@@ -254,7 +323,7 @@ function rst_testimonial_user_options_page_layouts()
                     </td>
                     <td>
                         <textarea id="rst_file_mishmatch_text" rows="4" cols="50"
-                                  name="rst_file_mishmatch_text"><?php echo rst_user_retrive_messages('rst_file_mishmatch_text', 'Only jpg, png and jpeg is accepted. Please try again.'); ?></textarea>
+                                  name="rst_file_mishmatch_text"><?php echo esc_attr(rst_user_retrive_messages('rst_file_mishmatch_text', 'Only jpg, png and jpeg is accepted. Please try again.')); ?></textarea>
                     </td>
                 </tr>
                 <tr>
@@ -263,7 +332,7 @@ function rst_testimonial_user_options_page_layouts()
                     </td>
                     <td>
                         <textarea id="rst_calc_error_text" rows="4" cols="50"
-                                  name="rst_calc_error_text"><?php echo rst_user_retrive_messages('rst_calc_error_text', 'Calculation is incorrect. Please try again.'); ?></textarea>
+                                  name="rst_calc_error_text"><?php echo esc_attr(rst_user_retrive_messages('rst_calc_error_text', 'Calculation is incorrect. Please try again.')); ?></textarea>
                     </td>
                 </tr>
                 <tr>
@@ -280,7 +349,7 @@ function rst_testimonial_user_options_page_layouts()
 function rst_frontend_form_callback()
 {
     ob_start();
-    include (__DIR__ . '/frontend-form.php');
+    include (__DIR__ . '/rst-frontend-form.php');
     return ob_get_clean();
 }
 

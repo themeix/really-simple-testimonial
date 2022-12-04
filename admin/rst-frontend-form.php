@@ -12,21 +12,21 @@ wp_enqueue_style('rst_frontend_from_style', plugin_dir_url(__FILE__) . 'css/fron
 
 <div class="smart-wrap rst_frontend_form">
     <div class="smart-forms smart-container wrap-2">
-        <div class="form-header header-primary"><h4>Please Give your feedback here</h4></div><!-- end .form-header section -->
+        <div class="form-header header-primary"><h4><?php _e("Please Give your feedback here", 'rst-testimonial'); ?></h4></div><!-- end .form-header section -->
         <form method="post" id="new_post" name="new_post"  action="" class="wpcf7-form" enctype="multipart/form-data">
             <div class="form-body">
                 <div class="frm-row">
                     <div class="section colm colm6">
                         <label for="firstname" class="field prepend-icon">
-                            <label for="firstname" class="field-icon">Name</label>
-                            <input type="text" name="_prospecto_nombre" id="firstname" class="gui-input" placeholder="Name">
+                            <label for="firstname" class="field-icon"><?php _e("Name", 'rst-testimonial'); ?></label>
+                            <input type="text" name="prospecto_nombre" id="firstname" class="gui-input" placeholder="Name">
 
                         </label>
                     </div><!-- end section -->
 
                     <div class="section colm colm6">
                         <label for="lastname" class="field prepend-icon">
-                            <label for="lastname" class="field-icon">Position</label>
+                            <label for="lastname" class="field-icon"><?php _e("Position", 'rst-testimonial'); ?></label>
                             <input type="text" name="lastname" id="lastname" class="gui-input" placeholder="Position">
 
                         </label>
@@ -34,7 +34,7 @@ wp_enqueue_style('rst_frontend_from_style', plugin_dir_url(__FILE__) . 'css/fron
 
                     <div class="section colm colm6">
                         <label for="lastname" class="field prepend-icon">
-                            <label for="lastname" class="field-icon">Company Name</label>
+                            <label for="lastname" class="field-icon"><?php _e("Company Name", 'rst-testimonial'); ?></label>
                             <input type="text" name="lastname" id="lastname" class="gui-input" placeholder="Company Name">
 
                         </label>
@@ -43,7 +43,7 @@ wp_enqueue_style('rst_frontend_from_style', plugin_dir_url(__FILE__) . 'css/fron
 
                 <div class="section">
                     <label for="website" class="field prepend-icon">
-                        <label for="website" class="field-icon">Company Website</label>
+                        <label for="website" class="field-icon"><?php _e("Company Website", 'rst-testimonial'); ?></label>
                         <input type="url" name="website" id="website" class="gui-input" placeholder="Company website url">
 
                     </label>
@@ -51,9 +51,9 @@ wp_enqueue_style('rst_frontend_from_style', plugin_dir_url(__FILE__) . 'css/fron
 
                 <div class="section">
                     <label class="field select">
-                        <label for="website" class="field-icon">Select Ratting</label>
+                        <label for="website" class="field-icon"><?php _e("Select Ratting", 'rst-testimonial'); ?></label>
                         <select id="language" name="language">
-                            <option value="">Select Ratting...</option>
+                            <option value=""><?php _e("Select Ratting...", 'rst-testimonial'); ?></option>
                             <option value="5">5</option>
                             <option value="4.5">4.5</option>
                             <option value="4">4</option>
@@ -68,7 +68,7 @@ wp_enqueue_style('rst_frontend_from_style', plugin_dir_url(__FILE__) . 'css/fron
 
                 <div class="section">
                     <label for="comment" class="field prepend-icon">
-                        <label for="website" class="field-icon">Your Comment</label>
+                        <label for="website" class="field-icon"><?php _e("Your Comment", 'rst-testimonial'); ?></label>
                         <textarea class="gui-textarea" rows="9" id="comment" name="comment" placeholder="Your comment"></textarea>
                     </label>
                 </div><!-- end section -->

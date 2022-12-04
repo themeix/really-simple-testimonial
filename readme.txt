@@ -4,7 +4,7 @@ Tags: testimonials, testimonial slider, star ratings
 Requires at least: 5.2
 Requires PHP: 5.6
 Tested up to: 6.1.1
-Stable tag: 3.0.2
+Stable tag: 1.0.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
