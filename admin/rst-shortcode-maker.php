@@ -25,7 +25,6 @@ if(!function_exists('rst_testimonial_pro_post_query')) {
         $testimonial_cat_name = get_post_meta($postid, 'testimonial_cat_name', true);
         $rst_testimonial_themes = get_post_meta($postid, 'rst_testimonial_themes', true);
         $rst_testimonial_theme_style = get_post_meta($postid, 'rst_testimonial_theme_style', true);
-        $grid_normal_column = get_post_meta($postid, 'grid_normal_column', true);
         $rst_order_by_option = get_post_meta($postid, 'rst_order_by_option', true);
 
         /*-----Text Align--------*/
@@ -96,14 +95,8 @@ if(!function_exists('rst_testimonial_pro_post_query')) {
         $itemsdesktopsmall = get_post_meta($postid, 'itemsdesktopsmall', true);
         $itemsmobile = get_post_meta($postid, 'itemsmobile', true);
 
-        $filter_menu_styles = get_post_meta($postid, 'filter_menu_styles', true);
-        $filter_menu_alignment = get_post_meta($postid, 'filter_menu_alignment', true);
-        $filter_menu_bg_color = get_post_meta($postid, 'filter_menu_bg_color', true);
-        $filter_menu_bg_color_hover = get_post_meta($postid, 'filter_menu_bg_color_hover', true);
         $filter_menu_bg_color_active = get_post_meta($postid, 'filter_menu_bg_color_active', true);
-        $filter_menu_font_color = get_post_meta($postid, 'filter_menu_font_color', true);
         $filter_menu_font_color_hover = get_post_meta($postid, 'filter_menu_font_color_hover', true);
-        $filter_menu_font_color_active = get_post_meta($postid, 'filter_menu_font_color_active', true);
         $nav_text_color_hover = get_post_meta($postid, 'nav_text_color_hover', true);
         $nav_bg_color_hover = get_post_meta($postid, 'nav_bg_color_hover', true);
         $pagination_bg_color_active = get_post_meta($postid, 'pagination_bg_color_active', true);
@@ -177,74 +170,23 @@ if(!function_exists('rst_testimonial_pro_post_query')) {
 
             case '3':
 
-                include(__DIR__ . '/templates/theme_3_slider/theme_3.php');
+                include(__DIR__ . '/templates/theme_3_grid/theme_3.php');
 
                 break;
 
 
             case '4':
 
-                include(__DIR__ . '/templates/theme_4_slider/theme_4.php');
+                include(__DIR__ . '/templates/theme_4_grid/theme_4.php');
 
                 break;
 
             case '5':
 
-                include(__DIR__ . '/templates/theme_5_slider/theme_5.php');
+                include(__DIR__ . '/templates/theme_5_grid/theme_5.php');
 
                 break;
 
-            case '6':
-
-                include(__DIR__ . '/templates/theme_6_grid/theme_6.php');
-
-                break;
-
-            case '7':
-
-                include(__DIR__ . '/templates/theme_7_grid/theme_7.php');
-
-                break;
-
-            case '8':
-
-                include(__DIR__ . '/templates/theme_8_grid/theme_8.php');
-
-                break;
-            case '9':
-
-                include(__DIR__ . '/templates/theme_9_grid/theme_9.php');
-
-                break;
-            case '10':
-
-                include(__DIR__ . '/templates/theme_10_grid/theme_10.php');
-
-                break;
-
-            case '11':
-
-                include(__DIR__ . '/templates/theme_1_slider/theme_1.php');
-
-                break;
-
-            case '12':
-
-                include(__DIR__ . '/templates/theme_2_slider/theme_2.php');
-
-                break;
-
-            case '13':
-
-                include(__DIR__ . '/templates/theme_13_slider/theme_13.php');
-
-                break;
-
-            case '14':
-
-                include(__DIR__ . '/templates/theme_14_slider/theme_14.php');
-
-                break;
         }
 
 

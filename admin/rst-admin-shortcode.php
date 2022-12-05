@@ -183,15 +183,6 @@ if (!function_exists('rst_testimonials_display_post_type_func')) {
         $navigation_style = get_post_meta($post->ID, 'navigation_style', true);
         $pagination_bg_color = get_post_meta($post->ID, 'pagination_bg_color', true);
         $pagination_bg_color_active = get_post_meta($post->ID, 'pagination_bg_color_active', true);
-        $grid_normal_column = get_post_meta($post->ID, 'grid_normal_column', true);
-        $filter_menu_styles = get_post_meta($post->ID, 'filter_menu_styles', true);
-        $filter_menu_alignment = get_post_meta($post->ID, 'filter_menu_alignment', true);
-        $filter_menu_bg_color = get_post_meta($post->ID, 'filter_menu_bg_color', true);
-        $filter_menu_bg_color_hover = get_post_meta($post->ID, 'filter_menu_bg_color_hover', true);
-        $filter_menu_bg_color_active = get_post_meta($post->ID, 'filter_menu_bg_color_active', true);
-        $filter_menu_font_color = get_post_meta($post->ID, 'filter_menu_font_color', true);
-        $filter_menu_font_color_hover = get_post_meta($post->ID, 'filter_menu_font_color_hover', true);
-        $filter_menu_font_color_active = get_post_meta($post->ID, 'filter_menu_font_color_active', true);
         $pagination_align = get_post_meta($post->ID, 'pagination_align', true);
         $pagination_style = get_post_meta($post->ID, 'pagination_style', true);
         $nav_value = get_post_meta($post->ID, 'nav_value', true);
@@ -202,15 +193,6 @@ if (!function_exists('rst_testimonials_display_post_type_func')) {
         $rst_dots_text_color = get_post_meta($post->ID, 'dots_text_color', true);
 
         $rst_testimonial_theme_style = ($rst_testimonial_theme_style) ? $rst_testimonial_theme_style : 1;
-        $grid_normal_column = ($grid_normal_column) ? $grid_normal_column : 3;
-        $filter_menu_styles = ($filter_menu_styles) ? $filter_menu_styles : 1;
-        $filter_menu_alignment = ($filter_menu_alignment) ? $filter_menu_alignment : 'center';
-        $filter_menu_bg_color = ($filter_menu_bg_color) ? $filter_menu_bg_color : '#f8f8f8';
-        $filter_menu_bg_color_hover = ($filter_menu_bg_color_hover) ? $filter_menu_bg_color_hover : '#003478';
-        $filter_menu_bg_color_active = ($filter_menu_bg_color_active) ? $filter_menu_bg_color_active : '#003478';
-        $filter_menu_font_color = ($filter_menu_font_color) ? $filter_menu_font_color : '#777777';
-        $filter_menu_font_color_hover = ($filter_menu_font_color_hover) ? $filter_menu_font_color_hover : '#ffffff';
-        $filter_menu_font_color_active = ($filter_menu_font_color_active) ? $filter_menu_font_color_active : '#ffffff';
         $nav_text_color_hover = ($nav_text_color_hover) ? $nav_text_color_hover : '#020202';
         $nav_bg_color_hover = ($nav_bg_color_hover) ? $nav_bg_color_hover : '#F43F5E';
         $nav_bg_color = ($nav_bg_color) ? $nav_bg_color : '#f2bccc';
@@ -228,44 +210,17 @@ if (!function_exists('rst_testimonials_display_post_type_func')) {
 
             <!-- <div class="wrap"> -->
             <ul class="tab-nav">
-                <li nav="1" class="nav1 <?php if ($nav_value == 1) {
-                    echo "active";
-                } ?>"><?php _e('Shortcodes', 'rst-testimonial'); ?></li>
-                <li nav="2" class="nav2 <?php if ($nav_value == 2) {
-                    echo "active";
-                } ?>"><?php _e('Testimonial Query ', 'Testimonial-manager-free'); ?></li>
-                <li nav="3" class="nav3 <?php if ($nav_value == 3) {
-                    echo "active";
-                } ?>"><?php _e('General Settings ', 'Testimonial-manager-free'); ?></li>
-                <li nav="4" class="nav4 <?php if ($nav_value == 4) {
-                    echo "active";
-                } ?>"><?php _e('Slider Settings', 'Testimonial-manager-free'); ?></li>
-
-                <li nav="6" class="nav6 <?php if ($nav_value == 6) {
-                    echo "active";
-                } ?>"><?php _e('Support & Doc', 'Testimonial-manager-free'); ?></li>
+                <li nav="1" class="nav1 active"><?php _e('Shortcodes', 'rst-testimonial'); ?></li>
+                <li nav="2" class="nav2 "><?php _e('Testimonial Query ', 'rst-testimonial'); ?></li>
+                <li nav="3" class="nav3 "><?php _e('General Settings ', 'rst-testimonial'); ?></li>
+                <li nav="4" class="nav4 "><?php _e('Slider Settings', 'rst-testimonial'); ?></li>
+                <li nav="6" class="nav6"><?php _e('Support & Doc', 'rst-testimonial'); ?></li>
             </ul> <!-- tab-nav end -->
-
-            <?php
-            $getNavValue = "";
-            if (!empty($nav_value)) {
-                $getNavValue = $nav_value;
-            } else {
-                $getNavValue = 1;
-            }
-            ?>
-            <input type="hidden" name="nav_value" id="nav_value" value="<?php echo esc_attr($getNavValue); ?>">
 
 
             <ul class="box">
                 <!-- Tab 1 -->
-                <li style="<?php if ($nav_value == 1) {
-                    echo "display: block;";
-                } else {
-                    echo "display: none;";
-                } ?>" class="box1 tab-box <?php if ($nav_value == 1) {
-                    echo "active";
-                } ?>">
+                <li   class="d-block box1 tab-box ">
                     <div class="option-box">
                         <p class="option-title"><?php _e('Shortcode', 'Testimonial-manager-free'); ?></p>
                         <p class="rst_option_alert"><?php _e('Use a unique shortcode only one time in same page / post', 'Testimonial-manager-free'); ?></p>
@@ -282,13 +237,7 @@ if (!function_exists('rst_testimonials_display_post_type_func')) {
                     </div>
                 </li>
                 <!-- Tab 2 -->
-                <li style="<?php if ($nav_value == 2) {
-                    echo "display: block;";
-                } else {
-                    echo "display: none;";
-                } ?>" class="box2 tab-box <?php if ($nav_value == 2) {
-                    echo "active";
-                } ?>">
+                <li   class="box2 tab-box ">
                     <div class="wrap">
                         <div class="option-box">
                             <p class="option-title"><?php _e('Testimonial Query', 'Testimonial-manager-free'); ?></p>
@@ -342,78 +291,15 @@ if (!function_exists('rst_testimonials_display_post_type_func')) {
 
                                             <option value="3" <?php if (isset ($rst_testimonial_themes)) {
                                                 selected($rst_testimonial_themes, '3');
-                                            } ?>><?php _e('Theme 3 (Slider)', 'rst-testimonial') ?></option>
+                                            } ?>><?php _e('Theme 3 (Grid)', 'rst-testimonial') ?></option>
 
                                             <option value="4" <?php if (isset ($rst_testimonial_themes)) {
                                                 selected($rst_testimonial_themes, '4');
-                                            } ?>><?php _e('Theme 4 (Slider)', 'rst-testimonial') ?></option>
+                                            } ?>><?php _e('Theme 4 (Grid)', 'rst-testimonial') ?></option>
 
                                             <option value="5" <?php if (isset ($rst_testimonial_themes)) {
                                                 selected($rst_testimonial_themes, '5');
                                             } ?>><?php _e('Theme 5 (Grid)', 'rst-testimonial') ?></option>
-
-                                            <option value="6" <?php if (isset ($rst_testimonial_themes)) {
-                                                selected($rst_testimonial_themes, '6');
-                                            } ?>><?php _e('Theme 6 (Grid)', 'rst-testimonial') ?></option>
-
-
-                                            <option value="7" <?php if (isset ($rst_testimonial_themes)) {
-                                                selected($rst_testimonial_themes, '7');
-                                            } ?>><?php _e('Theme 7 (Grid)', 'rst-testimonial') ?></option>
-
-                                            <option value="8" <?php if (isset ($rst_testimonial_themes)) {
-                                                selected($rst_testimonial_themes, '8');
-                                            } ?>><?php _e('Theme 8 (Grid)', 'rst-testimonial') ?></option>
-
-
-                                            <option value="9" <?php if (isset ($rst_testimonial_themes)) {
-                                                selected($rst_testimonial_themes, '9');
-                                            } ?>><?php _e('Theme 9 - Pro', 'rst-testimonial') ?></option>
-
-                                            <option value="10" <?php if (isset ($rst_testimonial_themes)) {
-                                                selected($rst_testimonial_themes, '10');
-                                            } ?>><?php _e('Theme 10 - Pro', 'rst-testimonial') ?></option>
-
-
-                                            <option value="11" <?php if (isset ($rst_testimonial_themes)) {
-                                                selected($rst_testimonial_themes, '11');
-                                            } ?>><?php _e('Theme 11 - Pro', 'rst-testimonial') ?></option>
-
-                                            <option value="12" <?php if (isset ($rst_testimonial_themes)) {
-                                                selected($rst_testimonial_themes, '12');
-                                            } ?>><?php _e('Theme 12 - Pro', 'rst-testimonial') ?></option>
-
-                                            <option value="13" <?php if (isset ($rst_testimonial_themes)) {
-                                                selected($rst_testimonial_themes, '13');
-                                            } ?>><?php _e('Theme 13 - Pro', 'rst-testimonial') ?></option>
-
-                                            <option value="14" <?php if (isset ($rst_testimonial_themes)) {
-                                                selected($rst_testimonial_themes, '14');
-                                            } ?>><?php _e('Theme 14 - Pro', 'rst-testimonial') ?></option>
-
-                                            <option value="15" <?php if (isset ($rst_testimonial_themes)) {
-                                                selected($rst_testimonial_themes, '15');
-                                            } ?>><?php _e('Theme 15 - Pro', 'rst-testimonial') ?></option>
-
-                                            <option value="16" <?php if (isset ($rst_testimonial_themes)) {
-                                                selected($rst_testimonial_themes, '16');
-                                            } ?>><?php _e('Theme 16 - Pro', 'rst-testimonial') ?></option>
-
-                                            <option value="17" <?php if (isset ($rst_testimonial_themes)) {
-                                                selected($rst_testimonial_themes, '17');
-                                            } ?>><?php _e('Theme 17 - Pro', 'rst-testimonial') ?></option>
-
-                                            <option value="18" <?php if (isset ($rst_testimonial_themes)) {
-                                                selected($rst_testimonial_themes, '18');
-                                            } ?>><?php _e('Theme 18 - Pro', 'rst-testimonial') ?></option>
-
-                                            <option value="19" <?php if (isset ($rst_testimonial_themes)) {
-                                                selected($rst_testimonial_themes, '19');
-                                            } ?>><?php _e('Theme 19 - Pro', 'rst-testimonial') ?></option>
-
-                                            <option value="20" <?php if (isset ($rst_testimonial_themes)) {
-                                                selected($rst_testimonial_themes, '20');
-                                            } ?>><?php _e('Theme 20 - Pro', 'rst-testimonial') ?></option>
 
                                         </select>
 
@@ -433,33 +319,32 @@ if (!function_exists('rst_testimonials_display_post_type_func')) {
                                             $('#rst_testimonial_themes').on('change', function () {
                                                 var theme = $(this).val();
 
-                                                if (theme == 1) {
-                                                    $('#rst_imagePreview').show();
-                                                    $('#rst_imagePreview img').attr('src', '<?php echo plugin_dir_url(__FILE__) . 'templates/screenshots/theme-1.png'; ?>');
-                                                } else if (theme == 2) {
-                                                    $('#rst_imagePreview').show();
-                                                    $('#rst_imagePreview img').attr('src', '<?php echo plugin_dir_url(__FILE__) . 'templates/screenshots/theme-2.png'; ?>');
-                                                } else if (theme == 3) {
-                                                    $('#rst_imagePreview').show();
-                                                    $('#rst_imagePreview img').attr('src', '<?php echo plugin_dir_url(__FILE__) . 'templates/screenshots/theme-3.png'; ?>');
-                                                } else if (theme == 4) {
-                                                    $('#rst_imagePreview').show();
-                                                    $('#rst_imagePreview img').attr('src', '<?php echo plugin_dir_url(__FILE__) . 'templates/screenshots/theme-4.png'; ?>');
-                                                } else if (theme == 5) {
-                                                    $('#rst_imagePreview').show();
-                                                    $('#rst_imagePreview img').attr('src', '<?php echo plugin_dir_url(__FILE__) . 'templates/screenshots/theme-5.png'; ?>');
-                                                } else if (theme == 6) {
-                                                    $('#rst_imagePreview').show();
-                                                    $('#rst_imagePreview img').attr('src', '<?php echo plugin_dir_url(__FILE__) . 'templates/screenshots/theme-6.png'; ?>');
-                                                } else if (theme == 7) {
-                                                    $('#rst_imagePreview').show();
-                                                    $('#rst_imagePreview img').attr('src', '<?php echo plugin_dir_url(__FILE__) . 'templates/screenshots/theme-7.png'; ?>');
-                                                } else if (theme == 8) {
-                                                    $('#rst_imagePreview').show();
-                                                    $('#rst_imagePreview img').attr('src', '<?php echo plugin_dir_url(__FILE__) . 'templates/screenshots/theme-8.png'; ?>');
-                                                } else {
+                                                if (theme == '') {
                                                     $('#rst_imagePreview').hide();
                                                 }
+
+                                                if (theme == '1') {
+                                                    $('#rst_imagePreview').show();
+                                                    $('#rst_imagePreview img').attr('src', '<?php echo plugin_dir_url(__FILE__) . 'templates/screenshots/theme_1.png'; ?>');
+                                                }
+                                                if (theme == '2') {
+                                                    $('#rst_imagePreview').show();
+                                                    $('#rst_imagePreview img').attr('src', '<?php echo plugin_dir_url(__FILE__) . 'templates/screenshots/theme_2.png'; ?>');
+                                                }
+                                                if (theme == '3') {
+                                                    $('#rst_imagePreview').show();
+                                                    $('#rst_imagePreview img').attr('src', '<?php echo plugin_dir_url(__FILE__) . 'templates/screenshots/theme_3.png'; ?>');
+                                                }
+                                                if (theme == '4') {
+                                                    $('#rst_imagePreview').show();
+                                                    $('#rst_imagePreview img').attr('src', '<?php echo plugin_dir_url(__FILE__) . 'templates/screenshots/theme_4.png'; ?>');
+                                                }
+                                                if (theme == '5') {
+                                                    $('#rst_imagePreview').show();
+                                                    $('#rst_imagePreview img').attr('src', '<?php echo plugin_dir_url(__FILE__) . 'templates/screenshots/theme_5.png'; ?>');
+                                                }
+
+
 
                                             });
                                         });
@@ -537,18 +422,8 @@ if (!function_exists('rst_testimonials_display_post_type_func')) {
                         </div>
                     </div>
                 </li>
-
-
-                <!-- Tab 3  General Settings Start Here-->
-
-
-                <li style="<?php if ($nav_value == 3) {
-                    echo "display: block;";
-                } else {
-                    echo "display: none;";
-                } ?>" class="box3 tab-box <?php if ($nav_value == 3) {
-                    echo "active";
-                } ?>">
+                <!-- Tab 3 -->
+                <li   class="box3 tab-box ">
                     <div class="wrap">
                         <div class="option-box">
                             <p class="option-title"><?php _e('General Settings', 'rst-testimonial'); ?></p>
@@ -1253,7 +1128,6 @@ if (!function_exists('rst_testimonials_display_post_type_func')) {
                                     </td>
                                 </tr>
 
-                                <!-- End Item Background Color -->
 
                                 <tr valign="top" id="item_backg_color_controller"
                                     style="<?php if ($rst_show_item_bg_option == 2) {
@@ -1338,6 +1212,8 @@ if (!function_exists('rst_testimonials_display_post_type_func')) {
                                     </td>
                                 </tr>
 
+                                <!-- End Item Border Radius-->
+
 
                                 <tr valign="top" id="item_border_color_controller"
                                     style="<?php if ($rst_show_item_bg_option == 2) {
@@ -1357,18 +1233,13 @@ if (!function_exists('rst_testimonials_display_post_type_func')) {
                                     </td>
                                 </tr>
 
+                                <!-- End Item Border Color -->
                             </table>
                         </div>
                     </div>
                 </li>
                 <!-- Tab 4 -->
-                <li style="<?php if ($nav_value == 4) {
-                    echo "display: block;";
-                } else {
-                    echo "display: none;";
-                } ?>" class="box4 tab-box <?php if ($nav_value == 4) {
-                    echo "active";
-                } ?>">
+                <li   class="box4 tab-box ">
                     <div class="wrap">
                         <div class="option-box">
                             <p class="option-title"><?php _e('Slider Settings', 'rst-testimonial'); ?></p>
@@ -1498,6 +1369,7 @@ if (!function_exists('rst_testimonials_display_post_type_func')) {
                                         <span class="rststestimonial_manager_hint"><?php echo __('Pick a color for Inactive Dots.', 'rst-testimonial'); ?></span>
                                     </td>
                                 </tr>
+                                <!--End Dots Color-->
 
 
                                 <tr valign="top" id="dots_bgcolor_controller" style="<?php if ($rst_dots == 'false') {
@@ -1516,8 +1388,12 @@ if (!function_exists('rst_testimonials_display_post_type_func')) {
                                         <span class="rststestimonial_manager_hint"><?php echo __('Pick a color for Active dots.', 'rst-testimonial'); ?></span>
                                     </td>
                                 </tr>
+                                <!--End Dots Background Color-->
 
                                 <!--DOTS AREA SETTINGS END-->
+
+
+                                <!--Navigation AREA SETTINGS START-->
 
 
                                 <tr valign="top">
@@ -1608,214 +1484,16 @@ if (!function_exists('rst_testimonials_display_post_type_func')) {
                                         <span class="rststestimonial_manager_hint"><?php echo __('Pick a color for background of navigation tool in hover.', 'rst-testimonial'); ?></span>
                                     </td>
                                 </tr>
-                                <!-- End Navigation Background Color -->
+                                <!-- End Navigation Hover Background Color -->
 
 
                             </table>
                         </div>
                     </div>
                 </li>
-                <!-- Tab 5 -->
-                <li style="<?php if ($nav_value == 5) {
-                    echo "display: block;";
-                } else {
-                    echo "display: none;";
-                } ?>" class="box5 tab-box <?php if ($nav_value == 5) {
-                    echo "active";
-                } ?>">
-                    <div class="wrap">
-                        <div class="option-box">
-                            <p class="option-title"><?php _e('Grid Normal Settings ( Premium Only )', 'rst-testimonial'); ?></p>
-                            <table class="form-table">
-                                <tr valign="top">
-                                    <th scope="row">
-                                        <label for="grid_normal_column"><?php _e('Number of columns', 'rst-testimonial') ?></label>
-                                    </th>
-                                    <td style="vertical-align: middle;">
-                                        <select name="grid_normal_column" id="grid_normal_column"
-                                                class="timezone_string">
-                                            <option value="3" <?php if (isset ($grid_normal_column)) {
-                                                selected($grid_normal_column, '3');
-                                            } ?>><?php _e('3', 'rst-testimonial') ?></option>
-                                            <option value="1" <?php if (isset ($grid_normal_column)) {
-                                                selected($grid_normal_column, '1');
-                                            } ?>><?php _e('1', 'rst-testimonial') ?></option>
-                                            <option value="2" <?php if (isset ($grid_normal_column)) {
-                                                selected($grid_normal_column, '2');
-                                            } ?>><?php _e('2', 'rst-testimonial') ?></option>
-                                            <option value="4" <?php if (isset ($grid_normal_column)) {
-                                                selected($grid_normal_column, '4');
-                                            } ?>><?php _e('4', 'rst-testimonial') ?></option>
-                                            <option value="5" <?php if (isset ($grid_normal_column)) {
-                                                selected($grid_normal_column, '5');
-                                            } ?>><?php _e('5', 'rst-testimonial') ?></option>
-                                            <option value="6" <?php if (isset ($grid_normal_column)) {
-                                                selected($grid_normal_column, '6');
-                                            } ?>><?php _e('6', 'rst-testimonial') ?></option>
-                                        </select>
-                                        <span class="rststestimonial_manager_hint"><?php echo __('Choose an option for posts column.', 'rst-testimonial'); ?></span>
-                                    </td>
-                                </tr>
 
-                                <tr valign="top">
-                                    <th scope="row">
-                                        <label for="filter_menu_styles"><?php _e('Filter Menu Style', 'rst-testimonial') ?></label>
-                                    </th>
-                                    <td style="vertical-align: middle;">
-                                        <select name="filter_menu_styles" id="filter_menu_styles"
-                                                class="timezone_string">
-
-                                            <option value="1" <?php if (isset ($filter_menu_styles)) {
-                                                selected($filter_menu_styles, '1');
-                                            } ?>><?php _e('Normal', 'rst-testimonial') ?></option>
-                                            <option value="2" <?php if (isset ($filter_menu_styles)) {
-                                                selected($filter_menu_styles, '2');
-                                            } ?>><?php _e('Checkbox', 'rst-testimonial') ?></option>
-                                            <option value="3" <?php if (isset ($filter_menu_styles)) {
-                                                selected($filter_menu_styles, '3');
-                                            } ?>><?php _e('Drop Down', 'rst-testimonial') ?></option>
-                                        </select>
-                                        <span class="rststestimonial_manager_hint"><?php echo __('Choose an option for filter menu style.', 'rst-testimonial'); ?></span>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th><u><?php echo __('Menu Styling', 'rst-testimonial'); ?></u></th>
-                                    <td></td>
-                                </tr>
-
-                                <tr valign="top">
-                                    <th scope="row">
-                                        <label for="filter_menu_alignment"><?php _e('Menu Align', 'rst-testimonial'); ?></label>
-                                    </th>
-                                    <td style="vertical-align: middle;">
-                                        <div class="switch-field">
-                                            <input type="radio" id="filter_menu_alignment1" name="filter_menu_alignment"
-                                                   value="left" <?php if ($filter_menu_alignment == 'left') {
-                                                echo 'checked';
-                                            } ?>/>
-                                            <label for="filter_menu_alignment1"><?php _e('Left', 'rst-testimonial'); ?></label>
-                                            <input type="radio" id="filter_menu_alignment2" name="filter_menu_alignment"
-                                                   value="center" <?php if ($filter_menu_alignment == 'center' || $filter_menu_alignment == '') {
-                                                echo 'checked';
-                                            } ?>/>
-                                            <label for="filter_menu_alignment2"><?php _e('Center', 'rst-testimonial'); ?></label>
-                                            <input type="radio" id="filter_menu_alignment3" name="filter_menu_alignment"
-                                                   value="right" <?php if ($filter_menu_alignment == 'right') {
-                                                echo 'checked';
-                                            } ?>/>
-                                            <label for="filter_menu_alignment3"><?php _e('Right', 'rst-testimonial'); ?></label>
-                                        </div>
-                                        <span class="rststestimonial_manager_hint"><?php echo __('Choose an option for the alignment of filter menu.', 'rst-testimonial'); ?></span>
-                                    </td>
-                                </tr><!-- End Menu Align -->
-
-                                <tr valign="top">
-                                    <th scope="row">
-                                        <label for="filter_menu_bg_color"><?php _e('Background Color', 'rst-testimonial'); ?></label>
-                                    </th>
-                                    <td style="vertical-align: middle;">
-                                        <input type="text" id="filter_menu_bg_color" name="filter_menu_bg_color"
-                                               value="<?php if ($filter_menu_bg_color != '') {
-                                                   echo esc_attr($filter_menu_bg_color);
-                                               } else {
-                                                   echo "#f8f8f8";
-                                               } ?>" class="timezone_string">
-                                        <span class="rststestimonial_manager_hint"><?php echo __('Pick a color for filter menu background.', 'rst-testimonial'); ?></span>
-                                    </td>
-                                </tr><!-- End Menu bg color -->
-
-                                <tr valign="top">
-                                    <th scope="row">
-                                        <label for="filter_menu_font_color"><?php _e('Font Color', 'rst-testimonial'); ?></label>
-                                    </th>
-                                    <td style="vertical-align: middle;">
-                                        <input type="text" id="filter_menu_font_color" name="filter_menu_font_color"
-                                               value="<?php if ($filter_menu_font_color != '') {
-                                                   echo esc_attr($filter_menu_font_color);
-                                               } else {
-                                                   echo "#777777";
-                                               } ?>" class="timezone_string">
-                                        <span class="rststestimonial_manager_hint"><?php echo __('Pick a color for text of filter menu.', 'rst-testimonial'); ?></span>
-                                    </td>
-                                </tr><!-- End Menu text color -->
-
-                                <tr valign="top">
-                                    <th scope="row">
-                                        <label for="filter_menu_bg_color_hover"><?php _e('Background Color(Hover)', 'rst-testimonial'); ?></label>
-                                    </th>
-                                    <td style="vertical-align: middle;">
-                                        <input type="text" id="filter_menu_bg_color_hover"
-                                               name="filter_menu_bg_color_hover"
-                                               value="<?php if ($filter_menu_bg_color_hover != '') {
-                                                   echo esc_attr($filter_menu_bg_color_hover);
-                                               } else {
-                                                   echo "#003478";
-                                               } ?>" class="timezone_string">
-                                        <span class="rststestimonial_manager_hint"><?php echo __('Pick a color for filter menu background on hover.', 'rst-testimonial'); ?></span>
-                                    </td>
-                                </tr><!-- End Menu bg color on hover -->
-
-                                <tr valign="top">
-                                    <th scope="row">
-                                        <label for="filter_menu_font_color_hover"><?php _e('Font Color(Hover)', 'rst-testimonial'); ?></label>
-                                    </th>
-                                    <td style="vertical-align: middle;">
-                                        <input type="text" id="filter_menu_font_color_hover"
-                                               name="filter_menu_font_color_hover"
-                                               value="<?php if ($filter_menu_font_color_hover != '') {
-                                                   echo esc_attr($filter_menu_font_color_hover);
-                                               } else {
-                                                   echo "#ffffff";
-                                               } ?>" class="timezone_string">
-                                        <span class="rststestimonial_manager_hint"><?php echo __('Pick a color for text of filter menu on hover.', 'rst-testimonial'); ?></span>
-                                    </td>
-                                </tr><!-- End Menu text color on hover -->
-
-                                <tr valign="top">
-                                    <th scope="row">
-                                        <label for="filter_menu_bg_color_active"><?php _e('Background Color(Active)', 'rst-testimonial'); ?></label>
-                                    </th>
-                                    <td style="vertical-align: middle;">
-                                        <input type="text" id="filter_menu_bg_color_active"
-                                               name="filter_menu_bg_color_active"
-                                               value="<?php if ($filter_menu_bg_color_active != '') {
-                                                   echo esc_attr($filter_menu_bg_color_active);
-                                               } else {
-                                                   echo "#003478";
-                                               } ?>" class="timezone_string">
-                                        <span class="rststestimonial_manager_hint"><?php echo __('Pick a color for filter menu background on hover.', 'rst-testimonial'); ?></span>
-                                    </td>
-                                </tr><!-- End Menu bg color when active -->
-
-                                <tr valign="top">
-                                    <th scope="row">
-                                        <label for="filter_menu_font_color_active"><?php _e('Font Color(Active)', 'rst-testimonial'); ?></label>
-                                    </th>
-                                    <td style="vertical-align: middle;">
-                                        <input type="text" id="filter_menu_font_color_active"
-                                               name="filter_menu_font_color_active"
-                                               value="<?php if ($filter_menu_font_color_active != '') {
-                                                   echo esc_attr($filter_menu_font_color_active);
-                                               } else {
-                                                   echo "#ffffff";
-                                               } ?>" class="timezone_string">
-                                        <span class="rststestimonial_manager_hint"><?php echo __('Pick a color for text of filter menu on hover.', 'rst-testimonial'); ?></span>
-                                    </td>
-                                </tr><!-- End Menu text color when active -->
-
-                            </table>
-                        </div>
-                    </div>
-                </li>
                 <!-- Tab 6 -->
-                <li style="<?php if ($nav_value == 6) {
-                    echo "display: block;";
-                } else {
-                    echo "display: none;";
-                } ?>" class="box6 tab-box <?php if ($nav_value == 6) {
-                    echo "active";
-                } ?>">
+                <li   class="box6 tab-box ">
                     <div class="wrap">
                         <div class="option-box">
                             <p class="option-title"><?php _e('Support & Documentation', 'rst-testimonial'); ?></p>
@@ -1865,7 +1543,7 @@ if (!function_exists('rst_testimonials_display_post_type_func')) {
         </div>
         <script type="text/javascript">
             jQuery(document).ready(function (jQuery) {
-                jQuery('#rst_item_bg_color, #rst_rating_color, #rst_content_bg_color, #rst_content_color, #rst_company_url_color, #rst_designation_color_option, #rst_name_color_option, #rst_imgborder_color_option, #nav_text_color, #nav_bg_color, #nav_text_color_hover, #nav_bg_color_hover, #pagination_bg_color, #pagination_bg_color_active, #filter_menu_bg_color, #filter_menu_font_color, #filter_menu_font_color_active, #filter_menu_bg_color_active, #filter_menu_font_color_hover, #filter_menu_bg_color_hover, #rst_item_border_color, #dots_bg_color, #dots_text_color').wpColorPicker();
+                jQuery('#rst_item_bg_color, #rst_rating_color, #rst_content_bg_color, #rst_content_color, #rst_company_url_color, #rst_designation_color_option, #rst_name_color_option, #rst_imgborder_color_option, #nav_text_color, #nav_bg_color, #nav_text_color_hover, #nav_bg_color_hover, #pagination_bg_color, #pagination_bg_color_active,  #rst_item_border_color, #dots_bg_color, #dots_text_color').wpColorPicker();
             });
         </script>
 
@@ -2132,50 +1810,6 @@ if(!function_exists('rst_testimonial_meta_box_save_func')) {
             update_post_meta($post_id, 'pagination_style', sanitize_text_field($_POST['pagination_style']));
         }
 
-        #Checks for input and sanitizes/saves if needed
-        if (isset($_POST['grid_normal_column']) && ($_POST['grid_normal_column'] != '')) {
-            update_post_meta($post_id, 'grid_normal_column', sanitize_text_field($_POST['grid_normal_column']));
-        }
-
-        #Checks for input and sanitizes/saves if needed
-        if (isset($_POST['filter_menu_styles']) && ($_POST['filter_menu_styles'] != '')) {
-            update_post_meta($post_id, 'filter_menu_styles', sanitize_text_field($_POST['filter_menu_styles']));
-        }
-
-        #Checks for input and sanitizes/saves if needed
-        if (isset($_POST['filter_menu_alignment']) && ($_POST['filter_menu_alignment'] != '')) {
-            update_post_meta($post_id, 'filter_menu_alignment', sanitize_text_field($_POST['filter_menu_alignment']));
-        }
-
-        #Checks for input and sanitizes/saves if needed
-        if (isset($_POST['filter_menu_bg_color']) && ($_POST['filter_menu_bg_color'] != '')) {
-            update_post_meta($post_id, 'filter_menu_bg_color', sanitize_hex_color($_POST['filter_menu_bg_color']));
-        }
-
-        #Checks for input and sanitizes/saves if needed
-        if (isset($_POST['filter_menu_bg_color_hover']) && ($_POST['filter_menu_bg_color_hover'] != '')) {
-            update_post_meta($post_id, 'filter_menu_bg_color_hover', sanitize_hex_color($_POST['filter_menu_bg_color_hover']));
-        }
-
-        #Checks for input and sanitizes/saves if needed
-        if (isset($_POST['filter_menu_bg_color_active']) && ($_POST['filter_menu_bg_color_active'] != '')) {
-            update_post_meta($post_id, 'filter_menu_bg_color_active', sanitize_hex_color($_POST['filter_menu_bg_color_active']));
-        }
-
-        #Checks for input and sanitizes/saves if needed
-        if (isset($_POST['filter_menu_font_color']) && ($_POST['filter_menu_font_color'] != '')) {
-            update_post_meta($post_id, 'filter_menu_font_color', sanitize_hex_color($_POST['filter_menu_font_color']));
-        }
-
-        #Checks for input and sanitizes/saves if needed
-        if (isset($_POST['filter_menu_font_color_hover']) && ($_POST['filter_menu_font_color_hover'] != '')) {
-            update_post_meta($post_id, 'filter_menu_font_color_hover', sanitize_hex_color($_POST['filter_menu_font_color_hover']));
-        }
-
-        #Checks for input and sanitizes/saves if needed
-        if (isset($_POST['filter_menu_font_color_active']) && ($_POST['filter_menu_font_color_active'] != '')) {
-            update_post_meta($post_id, 'filter_menu_font_color_active', sanitize_hex_color($_POST['filter_menu_font_color_active']));
-        }
 
         #Checks for input and sanitizes/saves if needed
         if (isset($_POST['pagination_bg_color']) && ($_POST['pagination_bg_color'] != '')) {

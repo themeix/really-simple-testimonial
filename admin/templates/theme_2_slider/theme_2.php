@@ -8,10 +8,10 @@ if (!defined('ABSPATH')) {
 if ($rst_testimonial_themes == 2) {
 
 
-    wp_enqueue_script('rst_theme_2_script_1', plugin_dir_url(__FILE__) . 'assets/js/slick.min.js', array('jquery'), time(), true);
+    wp_enqueue_script('rst_theme_2_script_1', plugin_dir_url(__FILE__) . '../common/js/slick.min.js', array('jquery'), time(), true);
 
 
-    wp_enqueue_style('rst_theme_2_style_1', plugin_dir_url(__FILE__) . 'assets/css/slick.css', array(), time(), 'all');
+    wp_enqueue_style('rst_theme_2_style_1', plugin_dir_url(__FILE__) . '../common/css/slick.css', array(), time(), 'all');
     wp_enqueue_style('rst_theme_2_style_2', plugin_dir_url(__FILE__) . 'assets/css/rst-style-2.css', array(), time(), 'all');
 
 
@@ -77,21 +77,21 @@ if ($rst_testimonial_themes == 2) {
 
             if ($navigation == 'true'){ ?>
             .rst_<?php echo esc_attr( $postid );?> .slider-arrows .rst-slider-prev {
-                background-color: <?php echo esc_attr( $rst_nav_bg_color )?> !important;
+                background-color: <?php echo $rst_nav_bg_color;?> !important;
 
             }
 
             .rst_<?php echo esc_attr( $postid );?> .slider-arrows .rst-slider-prev:hover {
-                background-color: <?php echo esc_attr( $rst_nav_bg_color_hover )?> !important;
+                background-color: <?php echo $rst_nav_bg_color_hover;?> !important;
             }
 
             .rst_<?php echo esc_attr( $postid );?> .slider-arrows .rst-slider-next {
-                background-color: <?php echo esc_attr( $rst_nav_bg_color )?> !important;
+                background-color: <?php echo $rst_nav_bg_color;?> !important;
 
             }
 
             .rst_<?php echo esc_attr( $postid );?> .slider-arrows .rst-slider-next:hover {
-                background-color: <?php echo esc_attr( $rst_nav_bg_color_hover )?> !important;
+                background-color: <?php echo $rst_nav_bg_color_hover;?> !important;
             }
 
             <?php
@@ -100,11 +100,11 @@ if ($rst_testimonial_themes == 2) {
 
             if($rst_dots == 'true'){ ?>
             .rst_<?php echo esc_attr( $postid );?> .slick-dots button {
-                background-color: <?php echo esc_attr( $rst_dots_inactive_color )?> !important;
+                background-color: <?php echo $rst_dots_inactive_color;?> !important;
             }
 
             .rst_<?php echo esc_attr( $postid );?> .slick-active button {
-                background-color: <?php echo esc_attr( $rst_dots_active_color )?> !important;
+                background-color: <?php echo $rst_dots_active_color;?> !important;
             }
 
             <?php
@@ -213,8 +213,10 @@ if ($rst_testimonial_themes == 2) {
                         <div class="rs-author-box md:flex mb-6">
                             <div class="flex-col mr-4">
                                 <div class="rst-author-images">
+                                    <?php if(!empty($rst_author_image2)){ ?>
                                     <img class="h-25 w-25 rounded-full border border-red-500 rst_author_image" src="<?php echo $rst_author_image2[0]; ?>"
                                          alt="author">
+                                    <?php } ?>
                                 </div>
                             </div>
                             <div class="flex-col rst_author_zone">

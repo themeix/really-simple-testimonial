@@ -6,9 +6,9 @@ if (!defined('ABSPATH')) {
 
 if ($rst_testimonial_themes == 1) {
 
-    wp_enqueue_script('rst_theme_1_script_1', plugin_dir_url(__FILE__) . 'assets/js/slick.min.js', array('jquery'), time(), true);
+    wp_enqueue_script('rst_theme_1_script_1', plugin_dir_url(__FILE__) . '../common/js/slick.min.js', array('jquery'), time(), true);
 
-    wp_enqueue_style('rst_theme_1_style_1', plugin_dir_url(__FILE__) . 'assets/css/slick.css', array(), time(), 'all');
+    wp_enqueue_style('rst_theme_1_style_1', plugin_dir_url(__FILE__) . '../common/css/slick.css', array(), time(), 'all');
     wp_enqueue_style('rst_theme_1_style_2', plugin_dir_url(__FILE__) . 'assets/css/rst-style-1.css', array(), time(), 'all');
 
     $args = array(
@@ -67,21 +67,21 @@ if ($rst_testimonial_themes == 1) {
 
             if ($navigation == 'true'){ ?>
             .rst_<?php echo esc_attr( $postid );?> .rst-prev {
-                background-color: <?php echo esc_attr( $rst_nav_bg_color )?> !important;
+                background-color: <?php echo $rst_nav_bg_color; ?> !important;
 
             }
 
             .rst_<?php echo esc_attr( $postid );?> .rst-prev:hover {
-                background-color: <?php echo esc_attr( $rst_nav_bg_color_hover )?> !important;
+                background-color: <?php echo $rst_nav_bg_color_hover; ?> !important;
             }
 
             .rst_<?php echo esc_attr( $postid );?> .rst-next {
-                background-color: <?php echo esc_attr( $rst_nav_bg_color )?> !important;
+                background-color: <?php echo $rst_nav_bg_color;?> !important;
 
             }
 
             .rst_<?php echo esc_attr( $postid );?> .rst-next:hover {
-                background-color: <?php echo esc_attr( $rst_nav_bg_color_hover )?> !important;
+                background-color: <?php echo $rst_nav_bg_color_hover;?> !important;
             }
 
             <?php
@@ -181,8 +181,10 @@ if ($rst_testimonial_themes == 1) {
 
                                     <div class="rst_thumb_item_thm_1">
                                         <div class="rst-avtar-images rst-transition-all  rst-relative rst-rounded-full rst-inline-block">
+                                            <?php if(!empty($rst_author_image2)){ ?>
                                             <img class=" rst-h-10 rst-w-10 rst-rounded-full  rst-border-2 rst-border-white rst_author_image"
                                                  src="<?php echo $rst_author_image2[0]; ?>" alt="testimonial"/>
+                                            <?php } ?>
                                         </div>
                                     </div>
 

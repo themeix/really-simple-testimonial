@@ -1,9 +1,6 @@
 jQuery( document ).ready( function( $  ) {
 	"use strict";
 
-
-
-	
 	$( "#rst_company_show" ).on( 'change', function() {
 		var getImgVal = $( this ).val();
 		if( getImgVal  == 2 ) {
@@ -198,8 +195,8 @@ jQuery( document ).ready( function( $  ) {
 		$( ".active" ).removeClass( "active" );
 		$( this ).addClass( "active" );
 		var nav = $( this ).attr( "nav" );
-		$( ".box li.tab-box" ).css( "display","none" );
-		$( ".box"+nav ).css( "display","block" );
+		$( ".box li.tab-box" ).removeClass( "d-block" );
+		$( ".box"+nav ).addClass( "d-block" );
 		$( "#nav_value" ).val( nav );
 	});
 
