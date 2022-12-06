@@ -60,4 +60,6 @@ if (!function_exists('rst_testimonials_custom_shortcode_callback')) {
     }
 }
 
+# Add the submenu page
+
 add_action('admin_menu', 'rst_testimonials_custom_submenu_page');

@@ -102,7 +102,7 @@ if (!function_exists('rst_testimonials_shortcode_clmn_display')) {
 add_action('manage_rst_shortcode_posts_custom_column', 'rst_testimonials_shortcode_clmn_display', 10, 2);
 
 
-// Register Testimonial Meta Box
+# Register Testimonial Meta Box
 if (!function_exists('rst_testimonial_shortcode_register_meta_boxes')) {
     function rst_testimonial_shortcode_register_meta_boxes()
     {
@@ -222,14 +222,14 @@ if (!function_exists('rst_testimonials_display_post_type_func')) {
                 <!-- Tab 1 -->
                 <li   class="d-block box1 tab-box ">
                     <div class="option-box">
-                        <p class="option-title"><?php _e('Shortcode', 'Testimonial-manager-free'); ?></p>
-                        <p class="rst_option_alert"><?php _e('Use a unique shortcode only one time in same page / post', 'Testimonial-manager-free'); ?></p>
-                        <p class="option-info"><?php _e('Copy this shortcode and paste on post, page or text widgets where you want to display Testimonial Showcase.', 'Testimonial-manager-free'); ?></p>
+                        <p class="option-title"><?php _e('Shortcode', 'rst-testimonial'); ?></p>
+                        <p class="rst_option_alert"><?php _e('Use a unique shortcode only one time in same page / post', 'rst-testimonial'); ?></p>
+                        <p class="option-info"><?php _e('Copy this shortcode and paste on post, page or text widgets where you want to display Testimonial Showcase.', 'rst-testimonial'); ?></p>
                         <textarea readonly cols="50" rows="1"
                                   onClick="this.select(); execCommand('copy'); ">[rstpro <?php echo 'id="' . esc_attr($post->ID) . '"'; ?>]</textarea>
                         <br/><br/>
-                        <p class="option-info"><?php _e('PHP Code:', 'Testimonial-manager-free'); ?></p>
-                        <p class="option-info"><?php _e('Use PHP code to your themes file to display Testimonial Showcase.', 'Testimonial-manager-free'); ?></p>
+                        <p class="option-info"><?php _e('PHP Code:', 'rst-testimonial'); ?></p>
+                        <p class="option-info"><?php _e('Use PHP code to your themes file to display Testimonial Showcase.', 'rst-testimonial'); ?></p>
                         <textarea readonly cols="50" rows="2"
                                   onClick="this.select(); execCommand('copy');"><?php echo '<?php echo do_shortcode("[rstpro id=';
                             echo "'" . esc_attr($post->ID) . "']";
@@ -240,7 +240,7 @@ if (!function_exists('rst_testimonials_display_post_type_func')) {
                 <li   class="box2 tab-box ">
                     <div class="wrap">
                         <div class="option-box">
-                            <p class="option-title"><?php _e('Testimonial Query', 'Testimonial-manager-free'); ?></p>
+                            <p class="option-title"><?php _e('Testimonial Query', 'rst-testimonial'); ?></p>
                             <table class="form-table">
 
                                 <tr valign="top">
@@ -263,7 +263,7 @@ if (!function_exists('rst_testimonials_display_post_type_func')) {
                                             foreach ($allthecats as $category):
                                                 $cat_id = $category->cat_ID;
                                                 $checked = (in_array($cat_id, ( array )$testimonial_cat_name) ? ' checked="checked"' : "");
-                                                echo '<li id="cat-' . $cat_id . '"><input type="checkbox" name="testimonial_cat_name[]" id="' . $cat_id . '" value="' . $cat_id . '"' . $checked . '> <label for="' . $cat_id . '">' . __($category->cat_name, 'rst-testimonial') . '</label></li>';
+                                                echo '<li id="cat-' . esc_attr($cat_id) . '"><input type="checkbox" name="testimonial_cat_name[]" id="' . esc_attr($cat_id) . '" value="' . esc_attr($cat_id) . '"' . $checked . '> <label for="' . esc_attr($cat_id) . '">' . __($category->cat_name, 'rst-testimonial') . '</label></li>';
                                             endforeach;
                                             ?>
                                         </ul>
@@ -1485,15 +1485,13 @@ if (!function_exists('rst_testimonials_display_post_type_func')) {
                                     </td>
                                 </tr>
                                 <!-- End Navigation Hover Background Color -->
-
-
                             </table>
                         </div>
                     </div>
                 </li>
 
                 <!-- Tab 6 -->
-                <li   class="box6 tab-box ">
+                <li class="box6 tab-box ">
                     <div class="wrap">
                         <div class="option-box">
                             <p class="option-title"><?php _e('Support & Documentation', 'rst-testimonial'); ?></p>
@@ -1509,9 +1507,9 @@ if (!function_exists('rst_testimonials_display_post_type_func')) {
                                         <div class="support-link">
                                             <a target="_blank"
                                                href="https://wordpress.org/support/plugin/"
-                                               class="button-1">WordPress.org</a>
+                                               class="button-1"><?php echo __('WordPress.org', 'rst-testimonial') ?></a>
                                             <a target="_blank" href="https://themeix.com"
-                                               class="button-1">Themeix.com</a>
+                                               class="button-1"><?php echo __('Themeix.com', 'rst-testimonial') ?></a>
                                         </div>
                                     </div>
                                     <div class="support-items">
