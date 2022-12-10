@@ -101,7 +101,7 @@ function rst_isOptionChecked($value)
 {
     $options = get_option('rst_user_fields');
     if (isset($options) && !empty($options) && is_array($options) && in_array($value, $options)) {
-        echo " checked ";
+        echo esc_attr(" checked ");
     }
 }
 
@@ -131,7 +131,7 @@ function rst_user_retrive_messages($field, $default)
 // Add Submenu Page Front end form options
 function rst_register_testimonial_user_options()
 {
-    add_submenu_page('edit.php?post_type=rst_testimonial', __('User Form', 'rst-testimonial'), sprintf('<span style="color:#ddd;">%s</span>', __('Frontend Submission', 'rst-testimonial')), 'manage_options', 'rst-user-form-options', 'rst_testimonial_user_options_page_layouts');
+    add_submenu_page('edit.php?post_type=rst_testimonial', esc_attr__('User Form', 'rst-testimonial'), sprintf('<span style="color:#ddd;">%s</span>', esc_attr__('Frontend Submission', 'rst-testimonial')), 'manage_options', 'rst-user-form-options', 'rst_testimonial_user_options_page_layouts');
 }
 
 add_action('admin_menu', 'rst_register_testimonial_user_options');
@@ -144,17 +144,17 @@ function rst_testimonial_user_options_page_layouts()
 
     ?>
     <div class="wrap">
-        <h1><?php _e('Testimonial Submission Form :', 'rst-testimonial'); ?></h1>
-        <p><?php _e('From the list below select and give the name of the field you want to show as input fields to the front end
+        <h1><?php esc_attr_e('Testimonial Submission Form :', 'rst-testimonial'); ?></h1>
+        <p><?php esc_attr_e('From the list below select and give the name of the field you want to show as input fields to the front end
             users to submit testimonials.', 'rst-testimonial') ?></p>
         <p>
-        <p><?php _e('To display a form with fields selected here, just copy and paste this', 'rst-testimonial') ?> <input
+        <p><?php esc_attr_e('To display a form with fields selected here, just copy and paste this', 'rst-testimonial') ?> <input
                     onClick="this.select(); execCommand('copy');" type="text" name="" readonly
-                    value="[rst_frontend_form]"> <?php _e('shortcode in a page or post. User will then see a form in frontend to
+                    value="[rst_frontend_form]"> <?php esc_attr_e('shortcode in a page or post. User will then see a form in frontend to
             submit their testimonial in that page or post.', 'rst-testimonial') ?></p>
         </p>
 
-        <h3 style="color:red;"><?php _e('Available Only Premium Version:', 'rst-testimonial'); ?></h3>
+        <h3 style="color:red;"><?php esc_attr_e('Available Only Premium Version:', 'rst-testimonial'); ?></h3>
         <form method="post" action="">
             <?php wp_nonce_field('rst_user_form_action', 'rst_user_form_nonce'); ?>
 
@@ -163,7 +163,7 @@ function rst_testimonial_user_options_page_layouts()
                     <td>
                         <input type="checkbox" id="rst_user_title" name="rstoptions[]"
                                value="Title" <?php rst_isOptionChecked('Title'); ?>>
-                        <label for="rst_user_title"><?php _e('Title', 'rst-testimonial'); ?></label>
+                        <label for="rst_user_title"><?php esc_attr_e('Title', 'rst-testimonial'); ?></label>
                     </td>
                     <td>
                         <input type="text" name="rst_user_title"
@@ -174,7 +174,7 @@ function rst_testimonial_user_options_page_layouts()
                     <td>
                         <input type="checkbox" id="rst_user_name" name="rstoptions[]"
                                value="Name" <?php rst_isOptionChecked('Name'); ?>>
-                        <label for="rst_user_name"><?php _e('Name', 'rst-testimonial'); ?></label>
+                        <label for="rst_user_name"><?php esc_attr_e('Name', 'rst-testimonial'); ?></label>
                     </td>
                     <td>
                         <input type="text" name="rst_user_name"
@@ -185,7 +185,7 @@ function rst_testimonial_user_options_page_layouts()
                     <td>
                         <input id="rst_user_designation" type="checkbox" name="rstoptions[]"
                                value="Designation" <?php rst_isOptionChecked('Designation'); ?>>
-                        <label for="rst_user_designation"><?php _e('Designation', 'rst-testimonial'); ?></label>
+                        <label for="rst_user_designation"><?php esc_attr_e('Designation', 'rst-testimonial'); ?></label>
                     </td>
                     <td>
                         <input type="text" name="rst_user_designation"
@@ -196,7 +196,7 @@ function rst_testimonial_user_options_page_layouts()
                     <td>
                         <input id="rst_user_company_name" type="checkbox" name="rstoptions[]"
                                value="Company Name" <?php rst_isOptionChecked('Company Name'); ?>>
-                        <label for="rst_user_company_name"><?php _e('Company Name', 'rst-testimonial'); ?></label>
+                        <label for="rst_user_company_name"><?php esc_attr_e('Company Name', 'rst-testimonial'); ?></label>
                     </td>
                     <td>
                         <input type="text" name="rst_user_company_name"
@@ -207,7 +207,7 @@ function rst_testimonial_user_options_page_layouts()
                     <td>
                         <input id="rst_user_company_url" type="checkbox" name="rstoptions[]"
                                value="Company URL" <?php rst_isOptionChecked('Company URL'); ?>>
-                        <label for="rst_user_company_url"><?php _e('Company URL', 'rst-testimonial'); ?></label>
+                        <label for="rst_user_company_url"><?php esc_attr_e('Company URL', 'rst-testimonial'); ?></label>
                     </td>
                     <td>
                         <input type="text" name="rst_user_company_url"
@@ -218,7 +218,7 @@ function rst_testimonial_user_options_page_layouts()
                     <td>
                         <input id="rst_user_rating" type="checkbox" name="rstoptions[]"
                                value="Rating" <?php rst_isOptionChecked('Rating'); ?>>
-                        <label for="rst_user_rating"><?php _e('Rating', 'rst-testimonial'); ?></label>
+                        <label for="rst_user_rating"><?php esc_attr_e('Rating', 'rst-testimonial'); ?></label>
                     </td>
                     <td>
                         <input type="text" name="rst_user_rating"
@@ -229,7 +229,7 @@ function rst_testimonial_user_options_page_layouts()
                     <td>
                         <input id="rst_user_testi_text" type="checkbox" name="rstoptions[]"
                                value="Testimonial Message" <?php rst_isOptionChecked('Testimonial Message'); ?>>
-                        <label for="rst_user_testi_text"><?php _e('Testimonial Message', 'rst-testimonial'); ?></label>
+                        <label for="rst_user_testi_text"><?php esc_attr_e('Testimonial Message', 'rst-testimonial'); ?></label>
                     </td>
                     <td>
                         <input type="text" name="rst_user_testi_text"
@@ -240,7 +240,7 @@ function rst_testimonial_user_options_page_layouts()
                     <td>
                         <input id="rst_user_categories" type="checkbox" name="rstoptions[]"
                                value="Categories" <?php rst_isOptionChecked('Categories'); ?>>
-                        <label for="rst_user_categories"><?php _e('Categories', 'rst-testimonial'); ?></label>
+                        <label for="rst_user_categories"><?php esc_attr_e('Categories', 'rst-testimonial'); ?></label>
                     </td>
                     <td><input type="text" name="rst_user_categories"
                                value="<?php rst_user_fields_name('rst_user_categories', 'Categories'); ?>">
@@ -250,7 +250,7 @@ function rst_testimonial_user_options_page_layouts()
                     <td>
                         <input id="rst_user_logo_img" type="checkbox" name="rstoptions[]"
                                value="User's Image/Logo" <?php rst_isOptionChecked("User's Image/Logo"); ?>>
-                        <label for="rst_user_logo_img"><?php _e('User\'s Image/Logo', 'rst-testimonial'); ?></label>
+                        <label for="rst_user_logo_img"><?php esc_attr_e('User\'s Image/Logo', 'rst-testimonial'); ?></label>
                     </td>
                     <td>
                         <input type="text" name="rst_user_logo_img"
@@ -261,7 +261,7 @@ function rst_testimonial_user_options_page_layouts()
                     <td>
                         <input id="rst_user_calculate" type="checkbox" name="rstoptions[]"
                                value="Calculate" <?php rst_isOptionChecked("Calculate"); ?>>
-                        <label for="rst_user_calculate"><?php _e('User\'s Captcha', 'rst-testimonial'); ?></label>
+                        <label for="rst_user_calculate"><?php esc_attr_e('User\'s Captcha', 'rst-testimonial'); ?></label>
                     </td>
                     <td>
                         <input type="text" name="rst_user_calculate"
@@ -270,25 +270,25 @@ function rst_testimonial_user_options_page_layouts()
                 </tr>
                 <tr>
                     <td>
-                        <label for="rst_post_status"><?php _e('Select post status', 'rst-testimonial'); ?></label>
+                        <label for="rst_post_status"><?php esc_attr_e('Select post status', 'rst-testimonial'); ?></label>
                     </td>
                     <td>
                         <select id="rst_post_status" name="rst_post_status">
-                            <option value="draft" <?php if (isset($rst_post_status) && $rst_post_status == 'draft') echo 'selected'; ?>>
-                                Draft
+                            <option value="draft" <?php if (isset($rst_post_status) && $rst_post_status == 'draft') echo esc_attr('selected');?>>
+                                <?php esc_attr_e('Draft', 'rst-testimonial')  ?>
                             </option>
-                            <option value="pending" <?php if (isset($rst_post_status) && $rst_post_status == 'pending') echo 'selected'; ?>>
-                                Pending
+                            <option value="pending" <?php if (isset($rst_post_status) && $rst_post_status == 'pending') echo esc_attr('selected'); ?>>
+                                <?php esc_attr_e('Pending', 'rst-testimonial')  ?>
                             </option>
-                            <option value="publish" <?php if (isset($rst_post_status) && $rst_post_status == 'publish') echo 'selected'; ?>>
-                                Publish
+                            <option value="publish" <?php if (isset($rst_post_status) && $rst_post_status == 'publish') echo esc_attr('selected'); ?>>
+                                <?php esc_attr_e('Publish', 'rst-testimonial')  ?>
                             </option>
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label for="rst_user_submit_btn_text"><?php _e('Submit button text', 'rst-testimonial'); ?></label>
+                        <label for="rst_user_submit_btn_text"><?php esc_attr_e('Submit button text', 'rst-testimonial'); ?></label>
                     </td>
                     <td>
                         <input id="rst_user_submit_btn_text" type="text" name="rst_user_submit_btn_text"
@@ -296,42 +296,42 @@ function rst_testimonial_user_options_page_layouts()
                     </td>
                 </tr>
             </table>
-            <h3> <?php _e('Testimonial Error and success messages for public users', 'rst-testimonial'); ?></h3>
+            <h3> <?php esc_attr_e('Testimonial Error and success messages for public users', 'rst-testimonial'); ?></h3>
             <table>
                 <tr>
                     <td>
-                        <label for="rst_save_success_text"><?php _e('Data saved success message', 'rst-testimonial'); ?></label>
+                        <label for="rst_save_success_text"><?php esc_attr_e('Data saved success message', 'rst-testimonial'); ?></label>
                     </td>
                     <td>
                         <textarea id="rst_save_success_text" rows="4" cols="50"
-                                  name="rst_save_success_text"><?php echo esc_attr(rst_user_retrive_messages('rst_save_success_text', 'Thank you for your valuable comments. Stay with us.')); ?></textarea>
+                                  name="rst_save_success_text"><?php echo esc_attr(rst_user_retrive_messages('rst_save_success_text', __('Thank you for your valuable comments. Stay with us.', 'rst-testimonial'))); ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label for="rst_save_error_text"><?php _e('Data saved error message', 'rst-testimonial'); ?></label>
+                        <label for="rst_save_error_text"><?php esc_attr_e('Data saved error message', 'rst-testimonial'); ?></label>
                     </td>
                     <td>
                         <textarea id="rst_save_error_text" rows="4" cols="50"
-                                  name="rst_save_error_text"><?php echo esc_attr(rst_user_retrive_messages('rst_save_error_text', 'Please fill-up all the info again.')); ?></textarea>
+                                  name="rst_save_error_text"><?php echo esc_attr(rst_user_retrive_messages('rst_save_error_text', __('Please fill-up all the info again.','rst-testimonial'))); ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label for="rst_file_mishmatch_text"><?php _e('File type mishmatch message', 'rst-testimonial'); ?></label>
+                        <label for="rst_file_mishmatch_text"><?php esc_attr_e('File type mishmatch message', 'rst-testimonial'); ?></label>
                     </td>
                     <td>
                         <textarea id="rst_file_mishmatch_text" rows="4" cols="50"
-                                  name="rst_file_mishmatch_text"><?php echo esc_attr(rst_user_retrive_messages('rst_file_mishmatch_text', 'Only jpg, png and jpeg is accepted. Please try again.')); ?></textarea>
+                                  name="rst_file_mishmatch_text"><?php echo esc_attr(rst_user_retrive_messages('rst_file_mishmatch_text', __('Only jpg, png and jpeg is accepted. Please try again.', 'rst-testimonial'))); ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label for="rst_calc_error_text"><?php _e('Calculation error message', 'rst-testimonial'); ?></label>
+                        <label for="rst_calc_error_text"><?php esc_attr_e('Calculation error message', 'rst-testimonial'); ?></label>
                     </td>
                     <td>
                         <textarea id="rst_calc_error_text" rows="4" cols="50"
-                                  name="rst_calc_error_text"><?php echo esc_attr(rst_user_retrive_messages('rst_calc_error_text', 'Calculation is incorrect. Please try again.')); ?></textarea>
+                                  name="rst_calc_error_text"><?php echo esc_attr(rst_user_retrive_messages('rst_calc_error_text', __('Calculation is incorrect. Please try again.', 'rst-testimonial'))); ?></textarea>
                     </td>
                 </tr>
                 <tr>
